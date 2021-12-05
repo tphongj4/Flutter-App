@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:market_online_app/auth/sign_in.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
