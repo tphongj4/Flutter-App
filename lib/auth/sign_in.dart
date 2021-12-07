@@ -48,7 +48,7 @@ class _SignInState extends State<SignIn> {
         width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-              fit: BoxFit.cover, image: AssetImage('assets/background.png')),
+              fit: BoxFit.cover, image: AssetImage('images/background.png')),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -63,7 +63,7 @@ class _SignInState extends State<SignIn> {
                   Text(
                     'Market Online App',
                     style:
-                        TextStyle(fontSize: 50, color: Colors.white, shadows: [
+                        TextStyle(fontSize: 45, color: Colors.white, shadows: [
                       BoxShadow(
                         blurRadius: 5,
                         color: Colors.green.shade900,
