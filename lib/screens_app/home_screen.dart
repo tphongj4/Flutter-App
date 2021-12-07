@@ -197,7 +197,7 @@ class HomeScreen extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          Text("adminmarket@gmail.com")
+                          Text("Team7@gmail.com")
                         ],
                       ),
                     )
