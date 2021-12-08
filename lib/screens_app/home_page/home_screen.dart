@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:market_online_app/screens_app/home_page/drawer_side.dart';
 import 'package:market_online_app/config/colors.dart';
 import 'package:market_online_app/screens_app/home_page/singal_product.dart';
+import 'package:market_online_app/screens_app/product_overview/product_overview.dart';
 
 class HomeScreen extends StatelessWidget {
   // Widget singalProducts() {
@@ -122,22 +123,27 @@ class HomeScreen extends StatelessWidget {
           child: Row(
             children: [
               SingalProduct(
-                // onTap: (){
-                //   Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ProductOverview()));
-                // },
-                productImage: 'https://khothietke.net/wp-content/uploads/2021/03/PNG00030-rau-cai-cai-thia-2-tai-png-mien-phi.png',
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ProductOverview()));
+                },
+                productImage:
+                    'https://khothietke.net/wp-content/uploads/2021/03/PNG00030-rau-cai-cai-thia-2-tai-png-mien-phi.png',
                 productName: "Rau cải tươi xanh",
               ),
               SingalProduct(
-                productImage: 'https://lh3.googleusercontent.com/proxy/oy_mjhi3UQSpHiiHH9wIAaAF2sannI3enZ2i8FhfUbjG_nXz4AWXJ5fKhp23CeBRchy3Gf_hhlwIckdyLc7Vo-3fwtjFzGDhdPjlP5LHQBDgoR5zioaEPw',
+                productImage:
+                    'https://lh3.googleusercontent.com/proxy/oy_mjhi3UQSpHiiHH9wIAaAF2sannI3enZ2i8FhfUbjG_nXz4AWXJ5fKhp23CeBRchy3Gf_hhlwIckdyLc7Vo-3fwtjFzGDhdPjlP5LHQBDgoR5zioaEPw',
                 productName: "Cải dún tươi xanh",
               ),
               SingalProduct(
-                productImage: 'https://cdn.tgdd.vn/Products/Images/8820/226914/bhx/cai-ngot-tui-500g-202009292342137825.jpg',
+                productImage:
+                    'https://cdn.tgdd.vn/Products/Images/8820/226914/bhx/cai-ngot-tui-500g-202009292342137825.jpg',
                 productName: "Cải ngọt bó tươi xanh",
               ),
               SingalProduct(
-                productImage: 'https://lh3.googleusercontent.com/proxy/_ijIrH609rxb93CkaWmy3jeQZ0zG7DC-Wq5b6kn16BndUbysknowP3g7CgtQkV7HrDtS1OzBlLypm4PZ1QXDEg1EFHRP5OM06_RnlmRUZLzgdGO4-7aE7A5bzrb3',
+                productImage:
+                    'https://lh3.googleusercontent.com/proxy/_ijIrH609rxb93CkaWmy3jeQZ0zG7DC-Wq5b6kn16BndUbysknowP3g7CgtQkV7HrDtS1OzBlLypm4PZ1QXDEg1EFHRP5OM06_RnlmRUZLzgdGO4-7aE7A5bzrb3',
                 productName: "Dưa chuột",
               )
             ],
@@ -172,19 +178,23 @@ class HomeScreen extends StatelessWidget {
                 // onTap: (){
                 //   Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ProductOverview()));
                 // },
-                productImage: 'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_09_29/chon_trai_cay_2.jpg',
+                productImage:
+                    'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_09_29/chon_trai_cay_2.jpg',
                 productName: "Bơ sáp Đà Nẵng",
               ),
               SingalProduct(
-                productImage: 'https://dacsancamvinh.net/wp-content/uploads/2015/06/cong-dung-qua-cam.jpg',
+                productImage:
+                    'https://dacsancamvinh.net/wp-content/uploads/2015/06/cong-dung-qua-cam.jpg',
                 productName: "Cam ngọt Đồng Tháp",
               ),
               SingalProduct(
-                productImage: 'https://cdn.tgdd.vn/Products/Images/8788/245525/bhx/dua-hau-khong-hat-tui-2kg-202107101526322905.jpg',
+                productImage:
+                    'https://cdn.tgdd.vn/Products/Images/8788/245525/bhx/dua-hau-khong-hat-tui-2kg-202107101526322905.jpg',
                 productName: "Dưa hấu đỏ",
               ),
               SingalProduct(
-                productImage: 'https://nucuoimekong.com/wp-content/uploads/trai-cay-mien-tay-buoi-da-xanh.jpg',
+                productImage:
+                    'https://nucuoimekong.com/wp-content/uploads/trai-cay-mien-tay-buoi-da-xanh.jpg',
                 productName: "Bưởi miền Tây ngon",
               )
             ],
@@ -219,19 +229,23 @@ class HomeScreen extends StatelessWidget {
                 // onTap: (){
                 //   Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ProductOverview()));
                 // },
-                productImage: 'https://cafefcdn.com/thumb_w/650/203337114487263232/2021/9/28/photo1632798710845-1632798710943181451693.png',
+                productImage:
+                    'https://cafefcdn.com/thumb_w/650/203337114487263232/2021/9/28/photo1632798710845-1632798710943181451693.png',
                 productName: "Thịt heo sạch",
               ),
               SingalProduct(
-                productImage: 'https://giadinhnestle.com.vn/sites/default/files/2020-08/integration/sites/default/files/articles/images/images/12-2017/cach-bao-quan-thit-bo-chuan-vi-cho-bua-com-ngon.jpg',
+                productImage:
+                    'https://giadinhnestle.com.vn/sites/default/files/2020-08/integration/sites/default/files/articles/images/images/12-2017/cach-bao-quan-thit-bo-chuan-vi-cho-bua-com-ngon.jpg',
                 productName: "Thịt bò lai tươi",
               ),
               SingalProduct(
-                productImage: 'https://cdn.statically.io/img/gachaybo.com/f=auto/wp-content/uploads/2019/06/mua-thit-ga-sach-2.jpg',
+                productImage:
+                    'https://cdn.statically.io/img/gachaybo.com/f=auto/wp-content/uploads/2019/06/mua-thit-ga-sach-2.jpg',
                 productName: "Thịt gà Kiến giống",
               ),
               SingalProduct(
-                productImage: 'https://vit29.com/media/news/0308_vit-om-kieu-tau1.jpg',
+                productImage:
+                    'https://vit29.com/media/news/0308_vit-om-kieu-tau1.jpg',
                 productName: "Thịt Vịt Lai om",
               )
             ],
@@ -240,6 +254,7 @@ class HomeScreen extends StatelessWidget {
       ],
     );
   }
+
   Widget _buildFishProduct() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -265,19 +280,23 @@ class HomeScreen extends StatelessWidget {
                 // onTap: (){
                 //   Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ProductOverview()));
                 // },
-                productImage: 'https://haisantrungnam.vn/wp-content/uploads/2020/03/ca-nuc-1-600x400.jpg',
+                productImage:
+                    'https://haisantrungnam.vn/wp-content/uploads/2020/03/ca-nuc-1-600x400.jpg',
                 productName: "Cá nục tươi",
               ),
               SingalProduct(
-                productImage: 'https://bhfood.vn/wp-content/uploads/2020/05/ca-chep-gion-bhfood-1.jpg',
+                productImage:
+                    'https://bhfood.vn/wp-content/uploads/2020/05/ca-chep-gion-bhfood-1.jpg',
                 productName: "Thịt chép giòn",
               ),
               SingalProduct(
-                productImage: 'https://sanvatphuongnam.vn/image/cache/catalog/products/thuy-hai-san/ca-dia-bong-1-800x800.jpg',
+                productImage:
+                    'https://sanvatphuongnam.vn/image/cache/catalog/products/thuy-hai-san/ca-dia-bong-1-800x800.jpg',
                 productName: "Cá dìa nước lợ",
               ),
               SingalProduct(
-                productImage: 'https://icdn.dantri.com.vn/thumb_w/640/2016/photo-1-1483059624194.jpg',
+                productImage:
+                    'https://icdn.dantri.com.vn/thumb_w/640/2016/photo-1-1483059624194.jpg',
                 productName: "Cá hồi",
               )
             ],
