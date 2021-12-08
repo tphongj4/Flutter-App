@@ -3,8 +3,9 @@ import 'package:market_online_app/config/colors.dart';
 import 'package:market_online_app/screens_app/home_page/home_screen.dart';
 
 class DrawerSide extends StatelessWidget {
-  Widget listTile({String title, IconData iconData}) {
+  Widget listTile({String title, IconData iconData, Function onTap}) {
     return ListTile(
+      onTap:onTap,
       leading: Icon(
         iconData,
         size: 32,
@@ -68,6 +69,13 @@ class DrawerSide extends StatelessWidget {
             listTile(
               iconData: Icons.person_outlined,
               title: "Hồ sơ của bạn",
+              onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => MyProfile(),
+                    ),
+                  );
+                }),
             ),
             listTile(
                 iconData: Icons.notifications_outlined, title: "Thông báo"),
