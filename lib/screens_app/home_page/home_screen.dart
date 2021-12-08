@@ -125,23 +125,47 @@ class HomeScreen extends StatelessWidget {
               SingalProduct(
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => ProductOverview()));
+                      builder: (context) => ProductOverview(
+                        productName: "Rau cải tươi xanh",
+                        productImage: "https://khothietke.net/wp-content/uploads/2021/03/PNG00030-rau-cai-cai-thia-2-tai-png-mien-phi.png",
+                      )));
                 },
                 productImage:
                     'https://khothietke.net/wp-content/uploads/2021/03/PNG00030-rau-cai-cai-thia-2-tai-png-mien-phi.png',
                 productName: "Rau cải tươi xanh",
               ),
               SingalProduct(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productName: "Cải dún tươi xanh",
+                        productImage: "https://lh3.googleusercontent.com/proxy/oy_mjhi3UQSpHiiHH9wIAaAF2sannI3enZ2i8FhfUbjG_nXz4AWXJ5fKhp23CeBRchy3Gf_hhlwIckdyLc7Vo-3fwtjFzGDhdPjlP5LHQBDgoR5zioaEPw",
+                      )));
+                },
                 productImage:
                     'https://lh3.googleusercontent.com/proxy/oy_mjhi3UQSpHiiHH9wIAaAF2sannI3enZ2i8FhfUbjG_nXz4AWXJ5fKhp23CeBRchy3Gf_hhlwIckdyLc7Vo-3fwtjFzGDhdPjlP5LHQBDgoR5zioaEPw',
                 productName: "Cải dún tươi xanh",
               ),
               SingalProduct(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productName: "Cải ngọt bó tươi xanh",
+                        productImage: "https://cdn.tgdd.vn/Products/Images/8820/226914/bhx/cai-ngot-tui-500g-202009292342137825.jpg",
+                      )));
+                },
                 productImage:
                     'https://cdn.tgdd.vn/Products/Images/8820/226914/bhx/cai-ngot-tui-500g-202009292342137825.jpg',
                 productName: "Cải ngọt bó tươi xanh",
               ),
               SingalProduct(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productName: "Dưa chuột",
+                        productImage: "https://lh3.googleusercontent.com/proxy/_ijIrH609rxb93CkaWmy3jeQZ0zG7DC-Wq5b6kn16BndUbysknowP3g7CgtQkV7HrDtS1OzBlLypm4PZ1QXDEg1EFHRP5OM06_RnlmRUZLzgdGO4-7aE7A5bzrb3",
+                      )));
+                },
                 productImage:
                     'https://lh3.googleusercontent.com/proxy/_ijIrH609rxb93CkaWmy3jeQZ0zG7DC-Wq5b6kn16BndUbysknowP3g7CgtQkV7HrDtS1OzBlLypm4PZ1QXDEg1EFHRP5OM06_RnlmRUZLzgdGO4-7aE7A5bzrb3',
                 productName: "Dưa chuột",
@@ -153,7 +177,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildFruitsProduct() {
+  Widget _buildFruitsProduct(context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -175,24 +199,49 @@ class HomeScreen extends StatelessWidget {
           child: Row(
             children: [
               SingalProduct(
-                // onTap: (){
-                //   Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ProductOverview()));
-                // },
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productName: "Bơ sáp Đà Nẵng",
+                        productImage: "https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_09_29/chon_trai_cay_2.jpg",
+                      )));
+                },
                 productImage:
                     'https://znews-photo.zadn.vn/w660/Uploaded/sgorvz/2016_09_29/chon_trai_cay_2.jpg',
                 productName: "Bơ sáp Đà Nẵng",
               ),
               SingalProduct(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productName: "Cam ngọt Đồng Tháp",
+                        productImage: "https://dacsancamvinh.net/wp-content/uploads/2015/06/cong-dung-qua-cam.jpg",
+                      )));
+                },
                 productImage:
                     'https://dacsancamvinh.net/wp-content/uploads/2015/06/cong-dung-qua-cam.jpg',
                 productName: "Cam ngọt Đồng Tháp",
               ),
               SingalProduct(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productName: "Dưa hấu đỏ",
+                        productImage: "https://cdn.tgdd.vn/Products/Images/8788/245525/bhx/dua-hau-khong-hat-tui-2kg-202107101526322905.jpg",
+                      )));
+                },
                 productImage:
                     'https://cdn.tgdd.vn/Products/Images/8788/245525/bhx/dua-hau-khong-hat-tui-2kg-202107101526322905.jpg',
                 productName: "Dưa hấu đỏ",
               ),
               SingalProduct(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productName: "Bưởi miền Tây ngon",
+                        productImage: "https://nucuoimekong.com/wp-content/uploads/trai-cay-mien-tay-buoi-da-xanh.jpg",
+                      )));
+                },
                 productImage:
                     'https://nucuoimekong.com/wp-content/uploads/trai-cay-mien-tay-buoi-da-xanh.jpg',
                 productName: "Bưởi miền Tây ngon",
@@ -204,7 +253,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildMeatProduct() {
+  Widget _buildMeatProduct(context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -226,24 +275,49 @@ class HomeScreen extends StatelessWidget {
           child: Row(
             children: [
               SingalProduct(
-                // onTap: (){
-                //   Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ProductOverview()));
-                // },
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productName: "Thịt heo sạch",
+                        productImage: "https://cafefcdn.com/thumb_w/650/203337114487263232/2021/9/28/photo1632798710845-1632798710943181451693.png",
+                      )));
+                },
                 productImage:
                     'https://cafefcdn.com/thumb_w/650/203337114487263232/2021/9/28/photo1632798710845-1632798710943181451693.png',
                 productName: "Thịt heo sạch",
               ),
               SingalProduct(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productName: "Thịt bò lai tươi",
+                        productImage: "https://giadinhnestle.com.vn/sites/default/files/2020-08/integration/sites/default/files/articles/images/images/12-2017/cach-bao-quan-thit-bo-chuan-vi-cho-bua-com-ngon.jpg",
+                      )));
+                },
                 productImage:
                     'https://giadinhnestle.com.vn/sites/default/files/2020-08/integration/sites/default/files/articles/images/images/12-2017/cach-bao-quan-thit-bo-chuan-vi-cho-bua-com-ngon.jpg',
                 productName: "Thịt bò lai tươi",
               ),
               SingalProduct(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productName: "Thịt gà Kiến giống",
+                        productImage: "https://cdn.statically.io/img/gachaybo.com/f=auto/wp-content/uploads/2019/06/mua-thit-ga-sach-2.jpg",
+                      )));
+                },
                 productImage:
                     'https://cdn.statically.io/img/gachaybo.com/f=auto/wp-content/uploads/2019/06/mua-thit-ga-sach-2.jpg',
                 productName: "Thịt gà Kiến giống",
               ),
               SingalProduct(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productName: "Thịt Vịt Lai om",
+                        productImage: "https://vit29.com/media/news/0308_vit-om-kieu-tau1.jpg",
+                      )));
+                },
                 productImage:
                     'https://vit29.com/media/news/0308_vit-om-kieu-tau1.jpg',
                 productName: "Thịt Vịt Lai om",
@@ -255,7 +329,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildFishProduct() {
+  Widget _buildFishProduct(context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -277,24 +351,49 @@ class HomeScreen extends StatelessWidget {
           child: Row(
             children: [
               SingalProduct(
-                // onTap: (){
-                //   Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ProductOverview()));
-                // },
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productName: "Cá nục tươi",
+                        productImage: "https://haisantrungnam.vn/wp-content/uploads/2020/03/ca-nuc-1-600x400.jpg",
+                      )));
+                },
                 productImage:
                     'https://haisantrungnam.vn/wp-content/uploads/2020/03/ca-nuc-1-600x400.jpg',
                 productName: "Cá nục tươi",
               ),
               SingalProduct(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productName: "Cá chép giòn",
+                        productImage: "https://bhfood.vn/wp-content/uploads/2020/05/ca-chep-gion-bhfood-1.jpg",
+                      )));
+                },
                 productImage:
                     'https://bhfood.vn/wp-content/uploads/2020/05/ca-chep-gion-bhfood-1.jpg',
-                productName: "Thịt chép giòn",
+                productName: "Cá chép giòn",
               ),
               SingalProduct(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productName: "Cá dìa nước lợ",
+                        productImage: "https://sanvatphuongnam.vn/image/cache/catalog/products/thuy-hai-san/ca-dia-bong-1-800x800.jpg",
+                      )));
+                },
                 productImage:
                     'https://sanvatphuongnam.vn/image/cache/catalog/products/thuy-hai-san/ca-dia-bong-1-800x800.jpg',
                 productName: "Cá dìa nước lợ",
               ),
               SingalProduct(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productName: "Cá hồi biển",
+                        productImage: "https://icdn.dantri.com.vn/thumb_w/640/2016/photo-1-1483059624194.jpg",
+                      )));
+                },
                 productImage:
                     'https://icdn.dantri.com.vn/thumb_w/640/2016/photo-1-1483059624194.jpg',
                 productName: "Cá hồi",
@@ -423,9 +522,9 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             _buildVegetableProduct(context),
-            _buildFishProduct(),
-            _buildMeatProduct(),
-            _buildFruitsProduct(),
+            _buildFishProduct(context),
+            _buildMeatProduct(context),
+            _buildFruitsProduct(context),
           ],
         ),
       ),

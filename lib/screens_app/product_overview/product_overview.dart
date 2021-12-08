@@ -4,6 +4,11 @@ import 'package:market_online_app/config/colors.dart';
 enum SigninCharacter { fill, outline }
 
 class ProductOverview extends StatefulWidget {
+  final String productName;
+  final String productImage;
+
+  ProductOverview({this.productImage,this.productName});
+
   @override
   _ProductOverviewState createState() => _ProductOverviewState();
 }
@@ -81,14 +86,14 @@ class _ProductOverviewState extends State<ProductOverview> {
               child: Column(
                 children: [
                   ListTile(
-                    title: Text("Rau cải tươi xanh"),
+                    title: Text(widget.productName),
                     subtitle: Text("50k/1kg"),
                   ),
                   Container(
                     height: 250,
                     padding: EdgeInsets.all(40),
                     child: Image.network(
-                        'https://khothietke.net/wp-content/uploads/2021/03/PNG00030-rau-cai-cai-thia-2-tai-png-mien-phi.png'),
+                        widget.productImage??"",),
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
