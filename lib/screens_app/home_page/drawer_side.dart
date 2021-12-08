@@ -21,7 +21,7 @@ class DrawerSide extends StatelessWidget {
     return Drawer(
       child: Container(
         width: 100,
-        color: greenColor,
+        color: Colors.green,
         child: ListView(
           children: [
             DrawerHeader(
@@ -33,9 +33,9 @@ class DrawerSide extends StatelessWidget {
                       radius: 43,
                       backgroundColor: Colors.white54,
                       child: CircleAvatar(
-                        backgroundColor: Colors.yellow,
+                        backgroundColor: Colors.green,
                         backgroundImage: NetworkImage(
-                          "https://s3.envato.com/files/328957910/vegi_thumb.png",
+                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy7nFdX1g_CVR4WyP5LgKOGytP0J8PE53_RQ&usqp=CAU",
                         ),
                         radius: 40,
                       ),
@@ -47,10 +47,9 @@ class DrawerSide extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Welcome Admin"),
+                        Text("Welcome Admin", style: TextStyle(color: Colors.white),),
                         Text(
-                          "admin@gmail.com",
-                          overflow: TextOverflow.ellipsis,
+                          "admin@gmail.com",style: TextStyle(color: Colors.white)
                         ),
                       ],
                     )
@@ -60,42 +59,42 @@ class DrawerSide extends StatelessWidget {
             ),
             listTile(
               iconData: Icons.home_outlined,
-              title: "Home",
+              title: "Trang chủ",
             ),
             listTile(
               iconData: Icons.shop_outlined,
-              title: "Review Cart",
+              title: "Xem lại giỏ hàng",
             ),
             listTile(
               iconData: Icons.person_outlined,
-              title: "My Profile",
+              title: "Hồ sơ của bạn",
             ),
             listTile(
-                iconData: Icons.notifications_outlined, title: "Notificatio"),
-            listTile(iconData: Icons.star_outline, title: "Rating & Review"),
+                iconData: Icons.notifications_outlined, title: "Thông báo"),
+            listTile(iconData: Icons.star_outline, title: "Xếp hạng và đánh giá"),
             listTile(
                 iconData: Icons.favorite_outline,
-                title: "Wishlist",
+                title: "Sản phẩm yêu thích",
             ),
-            listTile(iconData: Icons.copy_outlined, title: "Raise a Complaint"),
-            listTile(iconData: Icons.format_quote_outlined, title: "FAQs"),
+            listTile(iconData: Icons.copy_outlined, title: "Phản hồi chất lượng"),
+            listTile(iconData: Icons.format_quote_outlined, title: "Hỏi đáp"),
             Container(
               height: 350,
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Contact Support"),
+                  Text("Liên hệ hỗ trợ"),
                   SizedBox(
                     height: 10,
                   ),
                   Row(
                     children: [
-                      Text("Call us:"),
+                      Text("Gọi:"),
                       SizedBox(
                         width: 10,
                       ),
-                      Text("+923352580282"),
+                      Text("0934717617"),
                     ],
                   ),
                   SizedBox(
@@ -105,12 +104,12 @@ class DrawerSide extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        Text("Mail us:"),
+                        Text("Gửi mail: "),
                         SizedBox(
                           width: 10,
                         ),
                         Text(
-                          "assarbaloch5@gmail.com",
+                          "Team7@gmail.com",
                           overflow: TextOverflow.ellipsis,
                         ),
                       ],
