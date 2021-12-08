@@ -28,7 +28,7 @@ class MyProfile extends StatelessWidget {
         elevation: 0.0,
         title: Text(
           "Hồ sơ của bạn",
-          style: TextStyle(fontSize: 18, color: textColor),
+          style: TextStyle(fontSize: 18, color: Colors.white),
         ),
         backgroundColor: Colors.green,
       ),
@@ -38,18 +38,21 @@ class MyProfile extends StatelessWidget {
           Column(
             children: [
               Container(
-                height: 100,
+                height: 90,
                 color: Colors.green,
               ),
               Container(
-                height: 548,
+                height: 530,
                 width: double.infinity,
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10,),
                 decoration: BoxDecoration(
                   color: scaffoldBackgroundColor,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30)),
+                      topRight: Radius.circular(30),
+                      bottomLeft: Radius.circular(30.0),
+                      bottomRight: Radius.circular(30.0),
+                  ),
                 ),
                 child: ListView(
                   children: [

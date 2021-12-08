@@ -23,7 +23,7 @@ class DrawerSide extends StatelessWidget {
     return Drawer(
       child: Container(
         width: 100,
-        color: Colors.green,
+        color: scaffoldBackgroundColor,
         child: ListView(
           children: [
             DrawerHeader(
@@ -33,9 +33,9 @@ class DrawerSide extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 43,
-                      backgroundColor: Colors.white54,
+                      backgroundColor: Colors.green,
                       child: CircleAvatar(
-                        backgroundColor: Colors.green,
+                        backgroundColor: Colors.white,
                         backgroundImage: NetworkImage(
                           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy7nFdX1g_CVR4WyP5LgKOGytP0J8PE53_RQ&usqp=CAU",
                         ),
@@ -49,9 +49,9 @@ class DrawerSide extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Welcome Admin", style: TextStyle(color: Colors.white),),
+                        Text("Welcome Admin", style: TextStyle(color: Colors.red),),
                         Text(
-                          "admin@gmail.com",style: TextStyle(color: Colors.white)
+                          "admin@gmail.com",style: TextStyle(color: Colors.green)
                         ),
                       ],
                     )
@@ -98,7 +98,7 @@ class DrawerSide extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text("Gọi:"),
+                      Text("Gọi: "),
                       SizedBox(
                         width: 10,
                       ),

@@ -62,7 +62,7 @@ class _ProductOverviewState extends State<ProductOverview> {
           ),
           buttonNavigatorBar(
             backgroundColor: Colors.green,
-            color: textColor,
+            color: Colors.white70,
             iconColor: Colors.white70,
             tittle: "Thêm giỏ hàng",
             iconData: Icons.shop_outlined,
@@ -71,10 +71,10 @@ class _ProductOverviewState extends State<ProductOverview> {
       ),
       appBar: AppBar(
         backgroundColor: Colors.green,
-        iconTheme: IconThemeData(color: textColor),
+        iconTheme: IconThemeData(color: Colors.white),
         title: Text(
           "Chi tiết nhu yếu phẩm",
-          style: TextStyle(color: textColor),
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: Column(
