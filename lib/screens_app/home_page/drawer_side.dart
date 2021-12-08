@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:market_online_app/config/colors.dart';
 import 'package:market_online_app/screens_app/home_page/home_screen.dart';
+import 'package:market_online_app/screens_app/main_profile/my_profile.dart';
 
 class DrawerSide extends StatelessWidget {
   Widget listTile({String title, IconData iconData, Function onTap}) {
     return ListTile(
-      onTap:onTap,
+      onTap: onTap,
       leading: Icon(
         iconData,
         size: 32,
@@ -76,7 +77,6 @@ class DrawerSide extends StatelessWidget {
                     ),
                   );
                 }),
-            ),
             listTile(
                 iconData: Icons.notifications_outlined, title: "Thông báo"),
             listTile(iconData: Icons.star_outline, title: "Xếp hạng và đánh giá"),
