@@ -6,8 +6,9 @@ enum SigninCharacter { fill, outline }
 class ProductOverview extends StatefulWidget {
   final String productName;
   final String productImage;
+  final int productPrice;
 
-  ProductOverview({this.productImage,this.productName});
+  ProductOverview({this.productImage,this.productName, this.productPrice});
 
   @override
   _ProductOverviewState createState() => _ProductOverviewState();
@@ -87,7 +88,7 @@ class _ProductOverviewState extends State<ProductOverview> {
                 children: [
                   ListTile(
                     title: Text(widget.productName),
-                    subtitle: Text("50k/1kg"),
+                    subtitle: Text("${widget.productPrice} VND/1kg"),
                   ),
                   Container(
                     height: 250,
@@ -130,7 +131,7 @@ class _ProductOverviewState extends State<ProductOverview> {
                             )
                           ],
                         ),
-                        Text("50k/1kg"),
+                        Text("${widget.productPrice} VND/1kg"),
                         Container(
                           padding: EdgeInsets.symmetric(
                               horizontal: 30, vertical: 10),

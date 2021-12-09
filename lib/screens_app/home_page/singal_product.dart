@@ -5,8 +5,9 @@ class SingalProduct extends StatelessWidget {
   final String productImage;
   final String productName;
   final Function onTap;
+  final int productPrice;
 
-  SingalProduct({this.productImage,this.productName, this.onTap,});
+  SingalProduct({this.productImage,this.productName, this.onTap, this.productPrice});
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -49,7 +50,7 @@ class SingalProduct extends StatelessWidget {
                               color: Colors.black, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          '50k/1kg',
+                          '$productPrice VND/1kg',
                           style: TextStyle(
                               color: Colors.grey, fontWeight: FontWeight.bold),
                         ),
