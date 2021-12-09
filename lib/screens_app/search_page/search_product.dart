@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:market_online_app/models/product_model.dart';
 import 'package:market_online_app/widgets/single_item.dart';
 
-class Search extends StatelessWidget {
+class Search extends StatefulWidget {
 
+  final List<ProductModel> search;
+  Search({this.search});
+
+  @override
+  State<Search> createState() => _SearchState();
+}
+
+class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Text("Tìm kiếm nhu yếu phẩm"),
-         actions: [
+        actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Icon(Icons.menu_rounded),
@@ -40,11 +49,21 @@ class Search extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          SingleItem(isBool: false,),
-          SingleItem(isBool: false,),
-          SingleItem(isBool: false,),
-          SingleItem(isBool: false,),
-          SingleItem(isBool: false,),
+          Column(
+            children: widget.search.map((data) {
+              return SingleItem(
+                isBool: false,
+                productName: data.productName,
+                productImage: data.productImage,
+                productPrice: data.productPrice,
+              );
+            }).toList(),
+          )
+          // SingleItem(isBool: false,),
+          // SingleItem(isBool: false,),
+          // SingleItem(isBool: false,),
+          // SingleItem(isBool: false,),
+          // SingleItem(isBool: false,),
         ],
       ),
     );

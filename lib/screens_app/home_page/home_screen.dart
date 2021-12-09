@@ -121,9 +121,21 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('Rau củ - Gia vị'),
-              Text(
-                "View All",
-                style: TextStyle(color: Colors.grey),
+              // Phần của Tin
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => Search(
+                        search: productProvider.getVegetableProductDataList,
+                      ),
+                    ),
+                  );
+                },
+                child: Text(
+                  "Xem tất cả",
+                  style: TextStyle(color: Colors.grey),
+                ),
               )
             ],
           ),
@@ -232,9 +244,20 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('Trái cây tươi'),
-              Text(
-                "View All",
-                style: TextStyle(color: Colors.grey),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => Search(
+                        search: productProvider.getFruitsProductDataList,
+                      ),
+                    ),
+                  );
+                },
+                child: Text(
+                  "Xem tất cả",
+                  style: TextStyle(color: Colors.grey),
+                ),
               )
             ],
           ),
@@ -330,9 +353,20 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('Thịt tươi sống'),
-              Text(
-                "View All",
-                style: TextStyle(color: Colors.grey),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => Search(
+                        search: productProvider.getMeatProductDataList,
+                      ),
+                    ),
+                  );
+                },
+                child: Text(
+                  "Xem tất cả",
+                  style: TextStyle(color: Colors.grey),
+                ),
               )
             ],
           ),
@@ -427,9 +461,20 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('Cá tươi sống'),
-              Text(
-                "View All",
-                style: TextStyle(color: Colors.grey),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => Search(
+                        search: productProvider.getFishProductDataList,
+                      ),
+                    ),
+                  );
+                },
+                child: Text(
+                  "Xem tất cả",
+                  style: TextStyle(color: Colors.grey),
+                ),
               )
             ],
           ),

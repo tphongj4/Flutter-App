@@ -3,7 +3,11 @@ import 'package:market_online_app/config/colors.dart';
 
 class SingleItem extends StatelessWidget {
   bool isBool = false;
-  SingleItem({this.isBool});
+  String productImage;
+  String productName;
+  int productPrice;
+  SingleItem({this.isBool,this.productName,this.productImage,this.productPrice });
+
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,7 @@ class SingleItem extends StatelessWidget {
                   height: 100,
                   child: Center(
                     child: Image.network(
-                        "https://khothietke.net/wp-content/uploads/2021/03/PNG00030-rau-cai-cai-thia-2-tai-png-mien-phi.png"),
+                        productImage),
                   ),
                 ),
               ),
@@ -34,12 +38,12 @@ class SingleItem extends StatelessWidget {
                       Column(
                         children: [
                           Text(
-                            "Rau cải tươi xanh",
+                            productName,
                             style: TextStyle(
                                 color: textColor, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            "50k/1kg",
+                           "$productPrice/VND 1kg",
                             style: TextStyle(
                                 color: Colors.grey,
                                 fontWeight: FontWeight.bold),
