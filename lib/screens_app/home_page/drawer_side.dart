@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market_online_app/config/colors.dart';
+import 'package:market_online_app/screens_app/cart_review/cart_review.dart';
 import 'package:market_online_app/screens_app/home_page/home_screen.dart';
 import 'package:market_online_app/screens_app/main_profile/my_profile.dart';
 
@@ -62,10 +63,24 @@ class DrawerSide extends StatelessWidget {
             listTile(
               iconData: Icons.home_outlined,
               title: "Trang chủ",
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => HomeScreen(),
+                    ),
+                  );
+                }
             ),
             listTile(
               iconData: Icons.shop_outlined,
               title: "Xem lại giỏ hàng",
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => ReviewCart(),
+                    ),
+                  );
+                }
             ),
             listTile(
               iconData: Icons.person_outlined,

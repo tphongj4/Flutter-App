@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:market_online_app/screens_app/search_page/search_item.dart';
+import 'package:market_online_app/widgets/single_item.dart';
 
 class Search extends StatelessWidget {
 
@@ -8,7 +8,7 @@ class Search extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: Text("Search"),
+        title: Text("Tìm kiếm nhu yếu phẩm"),
          actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -40,11 +40,11 @@ class Search extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          SearchItem(),
-          SearchItem(),
-          SearchItem(),
-          SearchItem(),
-          SearchItem(),
+          SingleItem(isBool: false,),
+          SingleItem(isBool: false,),
+          SingleItem(isBool: false,),
+          SingleItem(isBool: false,),
+          SingleItem(isBool: false,),
         ],
       ),
     );
