@@ -374,16 +374,16 @@ class _HomeScreenState extends State<HomeScreen> {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children:  productProvider.getMeatProductDataList.map(
-                  (meatProductData) {
+            children: productProvider.getMeatProductDataList.map(
+              (meatProductData) {
                 return SingalProduct(
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => ProductOverview(
-                          productName: meatProductData.productName,
-                          productImage: meatProductData.productImage,
-                          productPrice: meatProductData.productPrice,
-                        )));
+                              productName: meatProductData.productName,
+                              productImage: meatProductData.productImage,
+                              productPrice: meatProductData.productPrice,
+                            )));
                   },
                   productImage: meatProductData.productImage,
                   productName: meatProductData.productName,
@@ -482,16 +482,16 @@ class _HomeScreenState extends State<HomeScreen> {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children:  productProvider.getFishProductDataList.map(
-                  (fishProductData) {
+            children: productProvider.getFishProductDataList.map(
+              (fishProductData) {
                 return SingalProduct(
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => ProductOverview(
-                          productName: fishProductData.productName,
-                          productImage: fishProductData.productImage,
-                          productPrice: fishProductData.productPrice,
-                        )));
+                              productName: fishProductData.productName,
+                              productImage: fishProductData.productImage,
+                              productPrice: fishProductData.productPrice,
+                            )));
                   },
                   productImage: fishProductData.productImage,
                   productName: fishProductData.productName,
@@ -513,58 +513,58 @@ class _HomeScreenState extends State<HomeScreen> {
             //         'https://haisantrungnam.vn/wp-content/uploads/2020/03/ca-nuc-1-600x400.jpg',
             //     productName: "Cá nục tươi",
             //   ),
-              // SingalProduct(
-              //   onTap: () {
-              //     Navigator.of(context).push(MaterialPageRoute(
-              //         builder: (context) => ProductOverview(
-              //               productName: "Cá chép giòn",
-              //               productImage:
-              //                   "https://bhfood.vn/wp-content/uploads/2020/05/ca-chep-gion-bhfood-1.jpg",
-              //             )));
-              //   },
-              //   productImage:
-              //       'https://bhfood.vn/wp-content/uploads/2020/05/ca-chep-gion-bhfood-1.jpg',
-              //   productName: "Cá chép giòn",
-              // ),
-              // SingalProduct(
-              //   onTap: () {
-              //     Navigator.of(context).push(MaterialPageRoute(
-              //         builder: (context) => ProductOverview(
-              //               productName: "Cá chẽm nước lợ",
-              //               productImage:
-              //                   "https://cdn.tgdd.vn/Files/2020/10/02/1295353/ca-chem-la-ca-gi-co-bao-nhieu-loai-ca-chem-202010021135030391.jpg",
-              //             )));
-              //   },
-              //   productImage:
-              //       'https://cdn.tgdd.vn/Files/2020/10/02/1295353/ca-chem-la-ca-gi-co-bao-nhieu-loai-ca-chem-202010021135030391.jpg',
-              //   productName: "Cá chẽm nước lợ",
-              // ),
-              // SingalProduct(
-              //   onTap: () {
-              //     Navigator.of(context).push(MaterialPageRoute(
-              //         builder: (context) => ProductOverview(
-              //               productName: "Cá hồi biển",
-              //               productImage:
-              //                   "https://icdn.dantri.com.vn/thumb_w/640/2016/photo-1-1483059624194.jpg",
-              //             )));
-              //   },
-              //   productImage:
-              //       'https://icdn.dantri.com.vn/thumb_w/640/2016/photo-1-1483059624194.jpg',
-              //   productName: "Cá hồi",
-              // ),
-              // SingalProduct(
-              //   onTap: () {
-              //     Navigator.of(context).push(MaterialPageRoute(
-              //         builder: (context) => ProductOverview(
-              //               productName: "Cá trê",
-              //               productImage:
-              //                   "https://baokhuyennong.com/wp-content/uploads/2020/03/hinh-anh-ca-tre.jpg",
-              //             )));
-              //   },
-              //   productImage:
-              //       'https://baokhuyennong.com/wp-content/uploads/2020/03/hinh-anh-ca-tre.jpg',
-              //   productName: "Cá trê",
-              // )
+            // SingalProduct(
+            //   onTap: () {
+            //     Navigator.of(context).push(MaterialPageRoute(
+            //         builder: (context) => ProductOverview(
+            //               productName: "Cá chép giòn",
+            //               productImage:
+            //                   "https://bhfood.vn/wp-content/uploads/2020/05/ca-chep-gion-bhfood-1.jpg",
+            //             )));
+            //   },
+            //   productImage:
+            //       'https://bhfood.vn/wp-content/uploads/2020/05/ca-chep-gion-bhfood-1.jpg',
+            //   productName: "Cá chép giòn",
+            // ),
+            // SingalProduct(
+            //   onTap: () {
+            //     Navigator.of(context).push(MaterialPageRoute(
+            //         builder: (context) => ProductOverview(
+            //               productName: "Cá chẽm nước lợ",
+            //               productImage:
+            //                   "https://cdn.tgdd.vn/Files/2020/10/02/1295353/ca-chem-la-ca-gi-co-bao-nhieu-loai-ca-chem-202010021135030391.jpg",
+            //             )));
+            //   },
+            //   productImage:
+            //       'https://cdn.tgdd.vn/Files/2020/10/02/1295353/ca-chem-la-ca-gi-co-bao-nhieu-loai-ca-chem-202010021135030391.jpg',
+            //   productName: "Cá chẽm nước lợ",
+            // ),
+            // SingalProduct(
+            //   onTap: () {
+            //     Navigator.of(context).push(MaterialPageRoute(
+            //         builder: (context) => ProductOverview(
+            //               productName: "Cá hồi biển",
+            //               productImage:
+            //                   "https://icdn.dantri.com.vn/thumb_w/640/2016/photo-1-1483059624194.jpg",
+            //             )));
+            //   },
+            //   productImage:
+            //       'https://icdn.dantri.com.vn/thumb_w/640/2016/photo-1-1483059624194.jpg',
+            //   productName: "Cá hồi",
+            // ),
+            // SingalProduct(
+            //   onTap: () {
+            //     Navigator.of(context).push(MaterialPageRoute(
+            //         builder: (context) => ProductOverview(
+            //               productName: "Cá trê",
+            //               productImage:
+            //                   "https://baokhuyennong.com/wp-content/uploads/2020/03/hinh-anh-ca-tre.jpg",
+            //             )));
+            //   },
+            //   productImage:
+            //       'https://baokhuyennong.com/wp-content/uploads/2020/03/hinh-anh-ca-tre.jpg',
+            //   productName: "Cá trê",
+            // )
             // ],
           ),
         ),
@@ -615,7 +615,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => Search(),
+                      builder: (context) => Search(
+                        search: productProvider.getAllProductSearch,
+                      ),
                     ),
                   );
                 },

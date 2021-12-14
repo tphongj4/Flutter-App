@@ -7,17 +7,16 @@ import 'package:market_online_app/models/product_model.dart';
 
 class ProductProvider with ChangeNotifier {
   ProductModel productModel;
+  List<ProductModel> search = []; //Provider Tìm kiếm nhu yếu phẩm
 
-
-
-  productModels(QueryDocumentSnapshot element){
+  productModels(QueryDocumentSnapshot element) {
     productModel = ProductModel(
       productName: element.get("productName"),
       productImage: element.get("productImage"),
       productPrice: element.get("productPrice"),
     );
+    search.add(productModel); //Provider Tìm kiếm nhu yếu phẩm
   }
-
 
   // Phần Provider lấy dữ liệu từ Firebase của Vegetable
   List<ProductModel> vegetableProductList = [];
@@ -43,11 +42,10 @@ class ProductProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  List<ProductModel>get getVegetableProductDataList{
+  List<ProductModel> get getVegetableProductDataList {
     return vegetableProductList;
   }
 //Hết Phần Provider lấy dữ liệu từ Firebase của Vegetable
-
 
 // --------------------------------------------------------------------------------------------
   // Phần Provider lấy dữ liệu từ Firebase của Fruits - Trái cây
@@ -57,17 +55,17 @@ class ProductProvider with ChangeNotifier {
   fruitsProductData() async {
     List<ProductModel> newList = [];
     QuerySnapshot value =
-    await FirebaseFirestore.instance.collection("FruitsProduct").get();
+        await FirebaseFirestore.instance.collection("FruitsProduct").get();
 
     value.docs.forEach(
-          (element) {
+      (element) {
         // print(element.data());
         // productModel = ProductModel(
         //   productName: element.get("productName"),
         //   productImage: element.get("productImage"),
         //   productPrice: element.get("productPrice"),
         // );
-            productModels(element);
+        productModels(element);
         newList.add(productModel);
       },
     );
@@ -75,7 +73,7 @@ class ProductProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  List<ProductModel>get getFruitsProductDataList{
+  List<ProductModel> get getFruitsProductDataList {
     return fruitsProductList;
   }
 
@@ -90,17 +88,17 @@ class ProductProvider with ChangeNotifier {
   fishProductData() async {
     List<ProductModel> newList = [];
     QuerySnapshot value =
-    await FirebaseFirestore.instance.collection("FishProduct").get();
+        await FirebaseFirestore.instance.collection("FishProduct").get();
 
     value.docs.forEach(
-          (element) {
+      (element) {
         // print(element.data());
         // productModel = ProductModel(
         //   productName: element.get("productName"),
         //   productImage: element.get("productImage"),
         //   productPrice: element.get("productPrice"),
         // );
-            productModels(element);
+        productModels(element);
         newList.add(productModel);
       },
     );
@@ -108,28 +106,25 @@ class ProductProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  List<ProductModel>get getFishProductDataList{
+  List<ProductModel> get getFishProductDataList {
     return fishProductList;
   }
 
   // Hết phần Provider lấy dữ liệu từ Firebase của Fish - Cá
 
-
 // ---------------------------------------------------------------------------------------------
 
-
   // Phần Provider lấy dữ liệu từ Firebase của Meat - Thịt
-
 
   List<ProductModel> meatProductList = [];
 
   meatProductData() async {
     List<ProductModel> newList = [];
     QuerySnapshot value =
-    await FirebaseFirestore.instance.collection("MeatProduct").get();
+        await FirebaseFirestore.instance.collection("MeatProduct").get();
 
     value.docs.forEach(
-          (element) {
+      (element) {
         // print(element.data());
         // productModel = ProductModel(
         //   productName: element.get("productName"),
@@ -137,7 +132,7 @@ class ProductProvider with ChangeNotifier {
         //   productPrice: element.get("productPrice"),
         // );
 
-            productModels(element);
+        productModels(element);
         newList.add(productModel);
       },
     );
@@ -145,9 +140,15 @@ class ProductProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  List<ProductModel>get getMeatProductDataList{
+  List<ProductModel> get getMeatProductDataList {
     return meatProductList;
   }
- // Hết Phần Provider lấy dữ liệu từ Firebase của Meat - Thịt
+
+  // Hết Phần Provider lấy dữ liệu từ Firebase của Meat - Thịt
 // --------------------------------------------------------------------------------
+//Provider Tìm kiếm nhu yếu phẩm
+//  Phần tìm kiếm - lấy giá trị trả về
+  List<ProductModel> get getAllProductSearch {
+    return search;
+  }
 }
