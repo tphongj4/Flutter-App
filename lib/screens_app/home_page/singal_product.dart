@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market_online_app/config/colors.dart';
+import 'package:market_online_app/widgets/count.dart';
 
 class SingalProduct extends StatelessWidget {
   final String productImage;
@@ -83,30 +84,31 @@ class SingalProduct extends StatelessWidget {
                             SizedBox(
                               width: 5,
                             ),
-                            Expanded(
-                              child: Container(
-                                height: 30,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.red),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.remove,
-                                        size: 15, color: Colors.red),
-                                    Text(
-                                      '1',
-                                      style: TextStyle(
-                                          color: Colors.red,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Icon(Icons.add, size: 15, color: Colors.red)
-                                  ],
-                                ),
-                              ),
-                            )
+                            Count(),
+                            // Expanded(
+                            //   child: Container(
+                            //     height: 30,
+                            //     width: 50,
+                            //     decoration: BoxDecoration(
+                            //       border: Border.all(color: Colors.red),
+                            //       borderRadius: BorderRadius.circular(8),
+                            //     ),
+                            //     child: Row(
+                            //       mainAxisAlignment: MainAxisAlignment.center,
+                            //       children: [
+                            //         Icon(Icons.remove,
+                            //             size: 15, color: Colors.red),
+                            //         Text(
+                            //           '1',
+                            //           style: TextStyle(
+                            //               color: Colors.red,
+                            //               fontWeight: FontWeight.bold),
+                            //         ),
+                            //         Icon(Icons.add, size: 15, color: Colors.red)
+                            //       ],
+                            //     ),
+                            //   ),
+                            // )
                           ],
                         ),
                       ],
