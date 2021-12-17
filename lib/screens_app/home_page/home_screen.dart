@@ -633,7 +633,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: CircleAvatar(
                 radius: 15,
                 backgroundColor: Colors.white,
-                child: Icon(Icons.shop, size: 15, color: Colors.green),
+                child: Icon(Icons.shopping_cart, size: 15, color: Colors.green),
               ),
             ),
           ],

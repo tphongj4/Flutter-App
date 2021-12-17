@@ -23,9 +23,46 @@ class ReviewCartProvider with ChangeNotifier {
         "cartImage": cartImage,
         "cartPrice": cartPrice,
         "cartQuantity": cartQuantity,
+        "isAdd": true,
       },
     );
   }
+
+
+
+  void updateReviewCartData({
+    String cartId,
+    String cartName,
+    int cartPrice,
+    String cartImage,
+    int cartQuantity,
+  }) async {
+    await FirebaseFirestore.instance
+        .collection("ReviewCart")
+        .doc(FirebaseAuth.instance.currentUser.uid)
+        .collection("YourReviewCart")
+        .doc(cartId)
+        .update(
+      {
+        "cartId": cartId,
+        "cartName": cartName,
+        "cartImage": cartImage,
+        "cartPrice": cartPrice,
+        "cartQuantity": cartQuantity,
+        "isAdd": true,
+      },
+    );
+  }
+
+
+
+
+
+
+
+
+
+
 
   // =================================================== Thiện - GET REVIEW DATA
   List<ReviewCartModel> reviewCartDataList = [];
