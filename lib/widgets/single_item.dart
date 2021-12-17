@@ -7,8 +7,9 @@ class SingleItem extends StatelessWidget {
   String productName;
   int productPrice;
   String producId;
+  Function onDelete;
   int productQuantity;
-  SingleItem({this.productQuantity,this.producId,this.isBool,this.productName,this.productImage,this.productPrice });
+  SingleItem({this.productQuantity,this.producId,this.isBool,this.productName,this.productImage,this.productPrice, this.onDelete });
 
 
   @override
@@ -120,12 +121,15 @@ class SingleItem extends StatelessWidget {
                         )
                       : Column(
                           children: [
-                            Icon(
-                              Icons.delete,
-                              size: 30,
-                              color: Colors.black,
-                            ),
-                            SizedBox(
+                    InkWell(
+                    onTap: onDelete,
+                    child: Icon(
+                      Icons.delete,
+                      size: 30,
+                      color: Colors.black,
+                    )),
+
+                    SizedBox(
                               height: 5,
                             ),
                             Container(
