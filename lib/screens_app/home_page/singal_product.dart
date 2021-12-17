@@ -7,8 +7,9 @@ class SingalProduct extends StatelessWidget {
   final String productName;
   final Function onTap;
   final int productPrice;
+  final String productId;
 
-  SingalProduct({this.productImage,this.productName, this.onTap, this.productPrice});
+  SingalProduct({this.productId,this.productImage,this.productName, this.onTap, this.productPrice});
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -84,7 +85,12 @@ class SingalProduct extends StatelessWidget {
                             SizedBox(
                               width: 5,
                             ),
-                            Count(),
+                            Count(
+                              productId: productId,
+                              productImage: productImage,
+                              productName: productName,
+                              productPrice: productPrice,
+                            ),
                             // Expanded(
                             //   child: Container(
                             //     height: 30,

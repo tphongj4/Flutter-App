@@ -7,6 +7,7 @@ import 'package:market_online_app/providers/product_provider.dart';
 import 'package:market_online_app/providers/user_provider.dart';
 import 'package:market_online_app/screens_app/home_page/home_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:market_online_app/providers/review_cart_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +26,10 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<UserProvider>(
           create: (context) => UserProvider(),
         ),
+        ChangeNotifierProvider<ReviewCartProvider>(
+          create: (context) => ReviewCartProvider(),
+        ),
+
       ],
       child: MaterialApp(
         theme: ThemeData(scaffoldBackgroundColor: scaffoldBackgroundColor),
