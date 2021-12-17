@@ -6,17 +6,19 @@ class SingleItem extends StatelessWidget {
   String productImage;
   String productName;
   int productPrice;
-  String producId;
+  String productId;
   Function onDelete;
   int productQuantity;
+  bool wishList = false;
   SingleItem(
       {this.productQuantity,
-      this.producId,
+      this.productId,
       this.isBool,
       this.productName,
       this.productImage,
       this.productPrice,
-      this.onDelete});
+      this.onDelete,
+      this.wishList});
 
   @override
   Widget build(BuildContext context) {
@@ -138,37 +140,42 @@ class SingleItem extends StatelessWidget {
                               SizedBox(
                                 height: 5,
                               ),
-                              Container(
-                                height: 25,
-                                width: 70,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
-                                    borderRadius: BorderRadius.circular(30)),
-                                child: Center(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        Icons.remove,
-                                        color: Colors.green,
-                                        size: 20,
-                                      ),
-                                      Text(
-                                        "1",
-                                        style: TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 14,
+                              wishList == false
+                                  ? Container(
+                                      height: 25,
+                                      width: 70,
+                                      decoration: BoxDecoration(
+                                          border:
+                                              Border.all(color: Colors.grey),
+                                          borderRadius:
+                                              BorderRadius.circular(30)),
+                                      child: Center(
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Icon(
+                                              Icons.remove,
+                                              color: Colors.green,
+                                              size: 20,
+                                            ),
+                                            Text(
+                                              "1",
+                                              style: TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 14,
+                                              ),
+                                            ),
+                                            Icon(
+                                              Icons.add,
+                                              color: Colors.green,
+                                              size: 20,
+                                            ),
+                                          ],
                                         ),
                                       ),
-                                      Icon(
-                                        Icons.add,
-                                        color: Colors.green,
-                                        size: 20,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              )
+                                    )
+                                  : Container(),
                             ],
                           ),
                         ),

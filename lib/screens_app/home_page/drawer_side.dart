@@ -3,6 +3,7 @@ import 'package:market_online_app/config/colors.dart';
 import 'package:market_online_app/screens_app/cart_review/cart_review.dart';
 import 'package:market_online_app/screens_app/home_page/home_screen.dart';
 import 'package:market_online_app/screens_app/main_profile/my_profile.dart';
+import 'package:market_online_app/screens_app/wish_list/wish_list.dart';
 
 class DrawerSide extends StatelessWidget {
   Widget listTile({String title, IconData iconData, Function onTap}) {
@@ -98,6 +99,13 @@ class DrawerSide extends StatelessWidget {
             listTile(
                 iconData: Icons.favorite_outline,
                 title: "Sản phẩm yêu thích",
+              onTap: (){
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => WishList(),
+                  ),
+                );
+              }
             ),
             listTile(iconData: Icons.copy_outlined, title: "Phản hồi chất lượng"),
             listTile(iconData: Icons.format_quote_outlined, title: "Hỏi đáp"),

@@ -90,10 +90,11 @@ class ReviewCart extends StatelessWidget {
                     ),
                     SingleItem(
                       isBool: true,
+                      wishList: false,
                       productImage: data.cartImage,
                       productName: data.cartName,
                       productPrice: data.cartPrice,
-                      producId: data.cartId,
+                      productId: data.cartId,
                       productQuantity: data.cartQuantity,
                       onDelete: () {
                         showAlertDialog(context, data);

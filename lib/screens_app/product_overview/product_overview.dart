@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:market_online_app/config/colors.dart';
 import 'package:market_online_app/providers/wish_list_provider.dart';
@@ -11,7 +13,8 @@ class ProductOverview extends StatefulWidget {
   final int productPrice;
   final String productId;
 
-  ProductOverview({this.productImage,this.productName, this.productPrice, this.productId});
+  ProductOverview(
+      {this.productImage, this.productName, this.productPrice, this.productId});
 
   @override
   _ProductOverviewState createState() => _ProductOverviewState();
@@ -30,59 +33,84 @@ class _ProductOverviewState extends State<ProductOverview> {
   }) {
     return Expanded(
       child: GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.all(20),
-        color: backgroundColor,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              iconData,
-              size: 20,
-              color: iconColor,
-            ),
-            SizedBox(
-              width: 5,
-            ),
-            Text(
-              tittle,
-              style: TextStyle(color: color),
-            )
-          ],
+        onTap: onTap,
+        child: Container(
+          padding: EdgeInsets.all(20),
+          color: backgroundColor,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                iconData,
+                size: 20,
+                color: iconColor,
+              ),
+              SizedBox(
+                width: 5,
+              ),
+              Text(
+                tittle,
+                style: TextStyle(color: color),
+              )
+            ],
+          ),
         ),
-      ),
       ),
     );
   }
+
   bool wishListBool = false;
+
+  getWishLishBool() {
+    FirebaseFirestore.instance
+        .collection("WishList")
+        .doc(FirebaseAuth.instance.currentUser.uid)
+        .collection("YourWishList")
+        .doc(widget.productId)
+        .get()
+        .then((value) => {
+              if (this.mounted)
+                {
+                  setState(
+                    () {
+                      wishListBool = value.get("wishList");
+                    },
+                  ),
+                }
+            });
+  }
+
   @override
   Widget build(BuildContext context) {
     WishListProvider wishListProvider = Provider.of(context);
+    getWishLishBool();
     return Scaffold(
       bottomNavigationBar: Row(
         children: [
           buttonNavigatorBar(
-            backgroundColor: Colors.red,
-            color: Colors.white70,
-            iconColor: Colors.grey,
-            tittle: "Sản phẩm yêu thích",
-            iconData: wishListBool==false?Icons.favorite_outline: Icons.favorite,
-            onTap: (){
-              setState(() {
-                wishListBool = !wishListBool;
-              });
-              if(wishListBool == true){
-                wishListProvider.addWishListCartData(
-                  wishListId: widget.productId,
-                  wishListImage: widget.productImage,
-                  wishListName: widget.productName,
-                  wishListPrice: widget.productPrice,
-                  wishListQuantity: 2
-                );
-              }
-            }
-          ),
+              backgroundColor: Colors.red,
+              color: Colors.white70,
+              iconColor: Colors.grey,
+              tittle: "Sản phẩm yêu thích",
+              iconData: wishListBool == false
+                  ? Icons.favorite_outline
+                  : Icons.favorite,
+              onTap: () {
+                setState(() {
+                  wishListBool = !wishListBool;
+                });
+                if (wishListBool == true) {
+                  wishListProvider.addWishListCartData(
+                      wishListId: widget.productId,
+                      wishListImage: widget.productImage,
+                      wishListName: widget.productName,
+                      wishListPrice: widget.productPrice,
+                      wishListQuantity: 2
+                  );
+                }else{
+                  wishListProvider.deleteWishList(widget.productId);
+                }
+              }),
           buttonNavigatorBar(
             backgroundColor: Colors.green,
             color: Colors.white70,
@@ -116,7 +144,8 @@ class _ProductOverviewState extends State<ProductOverview> {
                     height: 250,
                     padding: EdgeInsets.all(40),
                     child: Image.network(
-                        widget.productImage??"",),
+                      widget.productImage ?? "",
+                    ),
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -185,30 +214,30 @@ class _ProductOverviewState extends State<ProductOverview> {
           ),
           Expanded(
               child: Container(
-                padding: EdgeInsets.all(20),
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Về nhu yếu phẩm",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "Cải ngọt có nguồn gốc từ Ấn Độ, Trung Quốc. Cây thảo, cao tới 50 - 100 cm, thân tròn, không lông, lá có phiến xoan ngược tròn dài, đầu tròn hay tù, gốc từ từ hẹp, mép nguyên không nhăn, mập, trắng trắng, gân bên 5 - 6 đôi, cuống dài, tròn.",
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-                  ],
+            padding: EdgeInsets.all(20),
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Về nhu yếu phẩm",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-              ))
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Cải ngọt có nguồn gốc từ Ấn Độ, Trung Quốc. Cây thảo, cao tới 50 - 100 cm, thân tròn, không lông, lá có phiến xoan ngược tròn dài, đầu tròn hay tù, gốc từ từ hẹp, mép nguyên không nhăn, mập, trắng trắng, gân bên 5 - 6 đôi, cuống dài, tròn.",
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+              ],
+            ),
+          ))
         ],
       ),
     );

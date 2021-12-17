@@ -5,7 +5,8 @@ class ProductModel{
   String productImage;
   int productPrice;
   String productId;
+  int productQuantity;
 
-  ProductModel({this.productId,this.productName,this.productImage, this.productPrice});
+  ProductModel({this.productId,this.productName,this.productImage, this.productPrice, this.productQuantity});
 
 }
