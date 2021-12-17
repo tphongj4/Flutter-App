@@ -6,7 +6,9 @@ class SingleItem extends StatelessWidget {
   String productImage;
   String productName;
   int productPrice;
-  SingleItem({this.isBool,this.productName,this.productImage,this.productPrice });
+  String producId;
+  int productQuantity;
+  SingleItem({this.productQuantity,this.producId,this.isBool,this.productName,this.productImage,this.productPrice });
 
 
   @override

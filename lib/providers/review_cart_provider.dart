@@ -25,4 +25,32 @@ class ReviewCartProvider with ChangeNotifier {
       },
     );
   }
+  // =================================================== Thiện - GET REVIEW DATA
+List<ReviewCartModel> reviewCartDataList = [];
+void getReviewCartData() async {
+  List<ReviewCartModel> newList = [];
+
+  QuerySnapshot reviewCartValue = await FirebaseFirestore.instance
+      .collection("ReviewCart")
+      .doc(FirebaseAuth.instance.currentUser.uid)
+      .collection("YourReviewCart")
+      .get();
+  reviewCartValue.docs.forEach((element) {
+    ReviewCartModel reviewCartModel = ReviewCartModel(
+      cartId: element.get("cartId"),
+      cartImage: element.get("cartImage"),
+      cartName: element.get("cartName"),
+      cartPrice: element.get("cartPrice"),
+      cartQuantity: element.get("cartQuantity"),
+    );
+    newList.add(reviewCartModel);
+  });
+  reviewCartDataList = newList;
+  notifyListeners();
 }
+List<ReviewCartModel> get getReviewCartDataList{
+  return reviewCartDataList;
+}
+// Hết phần thêm dữ liệu vào giỏ hàng của Thiện
+}
+
