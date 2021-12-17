@@ -64,7 +64,13 @@ class _CountState extends State<Count> {
                 children: [
                   InkWell(
                     onTap: () {
-                      if (count > 1) {
+                      if (count == 1) {
+                        setState(() {
+                          isTrue = false;
+                        });
+                        reviewCartProvider
+                            .reviewCartDataDelete(widget.productId);
+                      } else if (count > 1) {
                         setState(() {
                           count--;
                         });
@@ -75,13 +81,6 @@ class _CountState extends State<Count> {
                           cartPrice: widget.productPrice,
                           cartQuantity: count,
                         );
-                      }
-                      if (count == 1) {
-                        setState(() {
-                          isTrue = false;
-                        });
-                        reviewCartProvider
-                            .reviewCartDataDelete(widget.productId);
                       }
                     },
                     child: Icon(

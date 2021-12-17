@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:market_online_app/config/colors.dart';
+import 'package:market_online_app/providers/wish_list_provider.dart';
+import 'package:provider/provider.dart';
 
 enum SigninCharacter { fill, outline }
 
@@ -7,8 +9,9 @@ class ProductOverview extends StatefulWidget {
   final String productName;
   final String productImage;
   final int productPrice;
+  final String productId;
 
-  ProductOverview({this.productImage,this.productName, this.productPrice});
+  ProductOverview({this.productImage,this.productName, this.productPrice, this.productId});
 
   @override
   _ProductOverviewState createState() => _ProductOverviewState();
@@ -23,8 +26,11 @@ class _ProductOverviewState extends State<ProductOverview> {
     Color color,
     String tittle,
     IconData iconData,
+    Function onTap,
   }) {
     return Expanded(
+      child: GestureDetector(
+      onTap: onTap,
       child: Container(
         padding: EdgeInsets.all(20),
         color: backgroundColor,
@@ -33,7 +39,7 @@ class _ProductOverviewState extends State<ProductOverview> {
           children: [
             Icon(
               iconData,
-              size: 17,
+              size: 20,
               color: iconColor,
             ),
             SizedBox(
@@ -46,11 +52,13 @@ class _ProductOverviewState extends State<ProductOverview> {
           ],
         ),
       ),
+      ),
     );
   }
-
+  bool wishListBool = false;
   @override
   Widget build(BuildContext context) {
+    WishListProvider wishListProvider = Provider.of(context);
     return Scaffold(
       bottomNavigationBar: Row(
         children: [
@@ -59,14 +67,28 @@ class _ProductOverviewState extends State<ProductOverview> {
             color: Colors.white70,
             iconColor: Colors.grey,
             tittle: "Sản phẩm yêu thích",
-            iconData: Icons.favorite_outline,
+            iconData: wishListBool==false?Icons.favorite_outline: Icons.favorite,
+            onTap: (){
+              setState(() {
+                wishListBool = !wishListBool;
+              });
+              if(wishListBool == true){
+                wishListProvider.addWishListCartData(
+                  wishListId: widget.productId,
+                  wishListImage: widget.productImage,
+                  wishListName: widget.productName,
+                  wishListPrice: widget.productPrice,
+                  wishListQuantity: 2
+                );
+              }
+            }
           ),
           buttonNavigatorBar(
             backgroundColor: Colors.green,
             color: Colors.white70,
             iconColor: Colors.white70,
             tittle: "Thêm giỏ hàng",
-            iconData: Icons.shop_outlined,
+            iconData: Icons.shopping_cart_outlined,
           ),
         ],
       ),

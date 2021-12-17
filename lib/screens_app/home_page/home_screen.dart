@@ -149,6 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => ProductOverview(
+                              productId: vegetableProductData.productId,
                               productName: vegetableProductData.productName,
                               productImage: vegetableProductData.productImage,
                               productPrice: vegetableProductData.productPrice,
@@ -272,6 +273,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => ProductOverview(
+                              productId: fruitsProductData.productId,
                               productName: fruitsProductData.productName,
                               productImage: fruitsProductData.productImage,
                               productPrice: fruitsProductData.productPrice,
@@ -382,6 +384,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => ProductOverview(
+                              productId: meatProductData.productId,
                               productName: meatProductData.productName,
                               productImage: meatProductData.productImage,
                               productPrice: meatProductData.productPrice,
@@ -491,6 +494,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => ProductOverview(
+                              productId: fishProductData.productId,
                               productName: fishProductData.productName,
                               productImage: fishProductData.productImage,
                               productPrice: fishProductData.productPrice,
