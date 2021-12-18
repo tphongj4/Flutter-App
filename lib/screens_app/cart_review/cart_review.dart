@@ -53,7 +53,7 @@ class ReviewCart extends StatelessWidget {
       bottomNavigationBar: ListTile(
         title: Text("Tổng cộng"),
         subtitle: Text(
-          "50.000VND",
+          "${reviewCartProvider.getTotalPrice()}\ VND ",
           style: TextStyle(color: Colors.red),
         ),
         trailing: Container(

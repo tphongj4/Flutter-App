@@ -97,6 +97,22 @@ class ReviewCartProvider with ChangeNotifier {
   }
 // Hết phần thêm dữ liệu vào giỏ hàng của Thiện
 
+
+  // =================== TÍNH TỔNG GIÁ NHU YẾU PHẨM -
+
+  getTotalPrice(){
+    double total = 0.0;
+    reviewCartDataList.forEach((element) {
+      // print(element.cartPrice);
+      total += element.cartPrice * element.cartQuantity;
+
+    });
+    return total;
+  }
+
+
+
+
 // ================================================PHẦN CỦA HUẾu - DELETEREVIEWCAR
 
   reviewCartDataDelete(cartId) {
