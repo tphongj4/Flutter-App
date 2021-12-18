@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:market_online_app/config/colors.dart';
+import 'package:market_online_app/providers/user_provider.dart';
 import 'package:market_online_app/screens_app/home_page/drawer_side.dart';
 
-class MyProfile extends StatelessWidget {
+class MyProfile extends StatefulWidget {
+  UserProvider userProvider;
+  MyProfile({this.userProvider});
   @override
+  State<MyProfile> createState() => _MyProfileState();
+}
 
-  Widget listTitle({IconData icon, String title}){
+class _MyProfileState extends State<MyProfile> {
+  @override
+  Widget listTitle({IconData icon, String title}) {
     return Column(
       children: [
         Divider(
@@ -20,8 +27,8 @@ class MyProfile extends StatelessWidget {
     );
   }
 
-
   Widget build(BuildContext context) {
+    var userData = widget.userProvider.currentUserData;
     return Scaffold(
       backgroundColor: Colors.green,
       appBar: AppBar(
@@ -32,7 +39,9 @@ class MyProfile extends StatelessWidget {
         ),
         backgroundColor: Colors.green,
       ),
-      drawer: DrawerSide(),
+      drawer: DrawerSide(
+        userProvider: widget.userProvider,
+      ),
       body: Stack(
         children: [
           Column(
@@ -44,14 +53,17 @@ class MyProfile extends StatelessWidget {
               Container(
                 height: 530,
                 width: double.infinity,
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10,),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 15,
+                  vertical: 10,
+                ),
                 decoration: BoxDecoration(
                   color: scaffoldBackgroundColor,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30),
-                      bottomLeft: Radius.circular(30.0),
-                      bottomRight: Radius.circular(30.0),
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                    bottomLeft: Radius.circular(30.0),
+                    bottomRight: Radius.circular(30.0),
                   ),
                 ),
                 child: ListView(
@@ -71,7 +83,7 @@ class MyProfile extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Hien.HD",
+                                    userData.userName,
                                     style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold,
@@ -80,7 +92,7 @@ class MyProfile extends StatelessWidget {
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  Text("hienhdit@gmail.com")
+                                  Text(userData.userEmail)
                                 ],
                               ),
                               CircleAvatar(
@@ -100,34 +112,21 @@ class MyProfile extends StatelessWidget {
                         ),
                       ],
                     ),
-                    listTitle(
-                      icon: Icons.shop_outlined,
-                      title: "Đơn hàng"
-                    ),
+                    listTitle(icon: Icons.shop_outlined, title: "Đơn hàng"),
                     listTitle(
                         icon: Icons.location_on_outlined,
-                        title: "Địa chỉ giao hàng"
-                    ),
+                        title: "Địa chỉ giao hàng"),
                     listTitle(
-                        icon: Icons.person_outline,
-                        title: "Giới thiệu bạn bè"
-                    ),
+                        icon: Icons.person_outline, title: "Giới thiệu bạn bè"),
                     listTitle(
                         icon: Icons.file_copy_outlined,
-                        title: "Điều khoản & Điều kiện"
-                    ),
+                        title: "Điều khoản & Điều kiện"),
                     listTitle(
                         icon: Icons.policy_outlined,
-                        title: "Chính sách bảo mật"
-                    ),
+                        title: "Chính sách bảo mật"),
+                    listTitle(icon: Icons.add_chart, title: "Thông tin"),
                     listTitle(
-                        icon: Icons.add_chart,
-                        title: "Thông tin"
-                    ),
-                    listTitle(
-                        icon: Icons.exit_to_app_outlined,
-                        title: "Đăng xuất"
-                    )
+                        icon: Icons.exit_to_app_outlined, title: "Đăng xuất")
                   ],
                 ),
               )
@@ -139,7 +138,7 @@ class MyProfile extends StatelessWidget {
               radius: 50,
               backgroundColor: Colors.deepOrangeAccent,
               child: CircleAvatar(
-                backgroundImage: NetworkImage(
+                backgroundImage: NetworkImage(userData.userImage ??
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy7nFdX1g_CVR4WyP5LgKOGytP0J8PE53_RQ&usqp=CAU"),
                 radius: 45,
                 backgroundColor: scaffoldBackgroundColor,

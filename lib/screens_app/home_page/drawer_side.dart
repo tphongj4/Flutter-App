@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:market_online_app/config/colors.dart';
+import 'package:market_online_app/providers/user_provider.dart';
 import 'package:market_online_app/screens_app/cart_review/cart_review.dart';
 import 'package:market_online_app/screens_app/home_page/home_screen.dart';
 import 'package:market_online_app/screens_app/main_profile/my_profile.dart';
 import 'package:market_online_app/screens_app/wish_list/wish_list.dart';
 
-class DrawerSide extends StatelessWidget {
+class DrawerSide extends StatefulWidget {
+  UserProvider userProvider;
+  DrawerSide({this.userProvider});
+  @override
+  State<DrawerSide> createState() => _DrawerSideState();
+}
+
+class _DrawerSideState extends State<DrawerSide> {
   Widget listTile({String title, IconData iconData, Function onTap}) {
     return ListTile(
       onTap: onTap,
@@ -22,6 +30,7 @@ class DrawerSide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var userData = widget.userProvider.currentUserData;
     return Drawer(
       child: Container(
         width: 100,
@@ -39,7 +48,8 @@ class DrawerSide extends StatelessWidget {
                       child: CircleAvatar(
                         backgroundColor: Colors.white,
                         backgroundImage: NetworkImage(
-                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy7nFdX1g_CVR4WyP5LgKOGytP0J8PE53_RQ&usqp=CAU",
+                          userData.userImage ??
+                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy7nFdX1g_CVR4WyP5LgKOGytP0J8PE53_RQ&usqp=CAU",
                         ),
                         radius: 40,
                       ),
@@ -51,9 +61,13 @@ class DrawerSide extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Welcome Admin", style: TextStyle(color: Colors.red),),
                         Text(
-                          "admin@gmail.com",style: TextStyle(color: Colors.green)
+                          userData.userName,
+                          style: TextStyle(color: Colors.red),
+                        ),
+                        Text(
+                          userData.userEmail,
+                          style: TextStyle(color: Colors.green),
                         ),
                       ],
                     )
@@ -62,52 +76,52 @@ class DrawerSide extends StatelessWidget {
               ),
             ),
             listTile(
-              iconData: Icons.home_outlined,
-              title: "Trang chủ",
+                iconData: Icons.home_outlined,
+                title: "Trang chủ",
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => HomeScreen(),
                     ),
                   );
-                }
-            ),
+                }),
             listTile(
-              iconData: Icons.shop_outlined,
-              title: "Xem lại giỏ hàng",
+                iconData: Icons.shop_outlined,
+                title: "Xem lại giỏ hàng",
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => ReviewCart(),
                     ),
                   );
-                }
-            ),
+                }),
             listTile(
-              iconData: Icons.person_outlined,
-              title: "Hồ sơ của bạn",
-              onTap: () {
+                iconData: Icons.person_outlined,
+                title: "Hồ sơ của bạn",
+                onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => MyProfile(),
+                      builder: (context) =>
+                          MyProfile(userProvider: widget.userProvider),
                     ),
                   );
                 }),
             listTile(
                 iconData: Icons.notifications_outlined, title: "Thông báo"),
-            listTile(iconData: Icons.star_outline, title: "Xếp hạng và đánh giá"),
+            listTile(
+                iconData: Icons.star_outline, title: "Xếp hạng và đánh giá"),
             listTile(
                 iconData: Icons.favorite_outline,
                 title: "Sản phẩm yêu thích",
-              onTap: (){
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => WishList(),
-                  ),
-                );
-              }
-            ),
-            listTile(iconData: Icons.copy_outlined, title: "Phản hồi chất lượng"),
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => WishList(),
+                    ),
+                  );
+                }),
+            listTile(
+                iconData: Icons.copy_outlined, title: "Phản hồi chất lượng"),
             listTile(iconData: Icons.format_quote_outlined, title: "Hỏi đáp"),
             Container(
               height: 350,
