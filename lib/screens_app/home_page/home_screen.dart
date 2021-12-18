@@ -9,6 +9,7 @@ import 'package:market_online_app/screens_app/home_page/singal_product.dart';
 import 'package:market_online_app/screens_app/product_overview/product_overview.dart';
 import 'package:market_online_app/screens_app/search_page/search_product.dart';
 import 'package:provider/provider.dart';
+import 'package:carousel_pro/carousel_pro.dart';
 
 class HomeScreen extends StatefulWidget {
   // Widget singalProducts() {
@@ -671,76 +672,100 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView(
           children: [
             Container(
-              height: 150,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(
-                          'https://t4.ftcdn.net/jpg/03/20/39/81/360_F_320398182_1X1ebszxgKyeS6j291ywWYIw1dfRLETC.jpg')),
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(10)),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: Container(
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(right: 140, bottom: 10),
-                            child: Container(
-                              height: 50,
-                              width: 100,
-                              decoration: BoxDecoration(
-                                color: Colors.green,
-                                borderRadius: BorderRadius.only(
-                                  bottomRight: Radius.circular(50),
-                                  bottomLeft: Radius.circular(50),
-                                ),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Market',
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                      shadows: [
-                                        BoxShadow(
-                                            color: Colors.green,
-                                            blurRadius: 10,
-                                            offset: Offset(3, 3))
-                                      ]),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Text(
-                            'Giảm 50% vì dịch',
-                            style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20),
-                            child: Text(
-                              'Trên tất cả các nhu yếu phẩm!',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(),
-                  ),
+              height: 200,
+              child: Carousel(
+                dotIncreasedColor: Colors.yellow,
+                dotBgColor: Colors.green,
+                dotColor: Colors.white,
+                autoplay: true,
+                // showIndicator: false,
+                dotSize: 4.0,
+                indicatorBgPadding: 8.0,
+                images: [
+                  NetworkImage(
+                      'https://chandat.net/testx/wp-content/uploads/2021/07/di-cho-online_2.5.1.jpg'),
+                  NetworkImage(
+                      'https://chondeal247.com/wp-content/uploads/2021/07/di-cho-tai-nha-sendo.jpg'),
+                  NetworkImage(
+                      'https://t4.ftcdn.net/jpg/03/20/39/81/360_F_320398182_1X1ebszxgKyeS6j291ywWYIw1dfRLETC.jpg'),
+                  NetworkImage(
+                      'https://media3.scdn.vn/img4/2021/09_17/WZ7195cxd2iwHpN5jAk7.jpg'),
+                  NetworkImage(
+                      'https://vcdn-giadinh.vnecdn.net/2021/07/21/123082927-xl-8285-1626834701.jpg'),
+                  NetworkImage(
+                      'https://adminvov1.vov.gov.vn/UploadImages/vov1/2020/thang_4/2020_4/so_dich_covid_19_cac_ba_noi_tro_tich_cuc_di_cho_online.jpg?w=100%')
                 ],
               ),
+              // height: 150,
+              // decoration: BoxDecoration(
+              //     image: DecorationImage(
+              //         fit: BoxFit.cover,
+              //         image: NetworkImage(
+              //             'https://t4.ftcdn.net/jpg/03/20/39/81/360_F_320398182_1X1ebszxgKyeS6j291ywWYIw1dfRLETC.jpg')),
+              //     color: Colors.red,
+              //     borderRadius: BorderRadius.circular(10)),
+              // child: Row(
+              //   children: [
+              //     Expanded(
+              //       flex: 2,
+              //       child: Container(
+              //         child: Column(
+              //           children: [
+              //             Padding(
+              //               padding:
+              //                   const EdgeInsets.only(right: 140, bottom: 10),
+              //               child: Container(
+              //                 height: 50,
+              //                 width: 100,
+              //                 decoration: BoxDecoration(
+              //                   color: Colors.green,
+              //                   borderRadius: BorderRadius.only(
+              //                     bottomRight: Radius.circular(50),
+              //                     bottomLeft: Radius.circular(50),
+              //                   ),
+              //                 ),
+              //                 child: Center(
+              //                   child: Text(
+              //                     'Market',
+              //                     style: TextStyle(
+              //                         fontSize: 15,
+              //                         color: Colors.white,
+              //                         shadows: [
+              //                           BoxShadow(
+              //                               color: Colors.green,
+              //                               blurRadius: 10,
+              //                               offset: Offset(3, 3))
+              //                         ]),
+              //                   ),
+              //                 ),
+              //               ),
+              //             ),
+              //             Text(
+              //               'Giảm 50% vì dịch',
+              //               style: TextStyle(
+              //                   fontSize: 30,
+              //                   color: Colors.white,
+              //                   fontWeight: FontWeight.bold),
+              //             ),
+              //             Padding(
+              //               padding: const EdgeInsets.only(left: 20),
+              //               child: Text(
+              //                 'Trên tất cả các nhu yếu phẩm!',
+              //                 style: TextStyle(
+              //                   color: Colors.white,
+              //                   fontWeight: FontWeight.bold,
+              //                 ),
+              //               ),
+              //             ),
+              //           ],
+              //         ),
+              //       ),
+              //     ),
+              //     Expanded(
+              //       child: Container(),
+              //     ),
+              //   ],
+              // ),
             ),
             _buildVegetableProduct(context),
             _buildFishProduct(context),

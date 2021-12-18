@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:market_online_app/config/colors.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:market_online_app/widgets/single_item.dart';
 import 'package:provider/provider.dart';
 import 'package:market_online_app/models/review_cart_model.dart';
@@ -62,15 +62,16 @@ class ReviewCart extends StatelessWidget {
           child: MaterialButton(
             child: Text("Gửi đơn hàng"),
             color: Colors.green,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => DeliveryDetails(),
                 ),
               );
-          },
+            },
           ),
         ),
       ),
