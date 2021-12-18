@@ -4,6 +4,7 @@ import 'package:market_online_app/widgets/single_item.dart';
 import 'package:provider/provider.dart';
 import 'package:market_online_app/models/review_cart_model.dart';
 import 'package:market_online_app/providers/review_cart_provider.dart';
+import 'package:market_online_app/screens_app/check_out/delivery_details/delivery_details.dart';
 
 class ReviewCart extends StatelessWidget {
   ReviewCartProvider reviewCartProvider;
@@ -63,7 +64,13 @@ class ReviewCart extends StatelessWidget {
             color: Colors.green,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => DeliveryDetails(),
+                ),
+              );
+          },
           ),
         ),
       ),
