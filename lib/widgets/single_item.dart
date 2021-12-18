@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:market_online_app/config/colors.dart';
+import 'package:market_online_app/providers/review_cart_provider.dart';
 import 'package:market_online_app/widgets/count.dart';
+import 'package:provider/provider.dart';
 
-class SingleItem extends StatelessWidget {
+class SingleItem extends StatefulWidget {
   bool isBool = false;
   String productImage;
   String productName;
@@ -22,7 +25,26 @@ class SingleItem extends StatelessWidget {
       this.wishList});
 
   @override
+  _SingleItemState createState() => _SingleItemState();
+}
+
+class _SingleItemState extends State<SingleItem> {
+  ReviewCartProvider reviewCartProvider;
+
+  int count;
+  getCount() {
+    setState(() {
+      count = widget.productQuantity;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    getCount();
+    // print("----------------------------------------$count");
+    // print("Kiểm tra số lượng giỏ hàng --------------${widget.productQuantity}");
+    reviewCartProvider = Provider.of<ReviewCartProvider>(context);
+    reviewCartProvider.getReviewCartData();
     return Column(
       children: [
         Padding(
@@ -33,7 +55,7 @@ class SingleItem extends StatelessWidget {
                 child: Container(
                   height: 100,
                   child: Center(
-                    child: Image.network(productImage),
+                    child: Image.network(widget.productImage),
                   ),
                 ),
               ),
@@ -41,7 +63,7 @@ class SingleItem extends StatelessWidget {
                 child: Container(
                   height: 100,
                   child: Column(
-                    mainAxisAlignment: isBool == false
+                    mainAxisAlignment: widget.isBool == false
                         ? MainAxisAlignment.spaceAround
                         : MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,19 +71,19 @@ class SingleItem extends StatelessWidget {
                       Column(
                         children: [
                           Text(
-                            productName,
+                            widget.productName,
                             style: TextStyle(
                                 color: textColor, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            "$productPrice/VND 1kg",
+                            "${widget.productPrice}/VND 1kg",
                             style: TextStyle(
                                 color: Colors.grey,
                                 fontWeight: FontWeight.bold),
                           )
                         ],
                       ),
-                      isBool == false
+                      widget.isBool == false
                           ? GestureDetector(
                               onTap: () {
                                 showModalBottomSheet(
@@ -131,22 +153,22 @@ class SingleItem extends StatelessWidget {
               Expanded(
                 child: Container(
                   height: 100,
-                  padding: isBool == false
+                  padding: widget.isBool == false
                       ? EdgeInsets.symmetric(horizontal: 15, vertical: 32)
                       : EdgeInsets.only(left: 15, right: 15),
-                  child: isBool == false
+                  child: widget.isBool == false
                       ? Count(
-                          productId: productId,
-                          productImage: productImage,
-                          productName: productName,
-                          productPrice: productPrice,
+                          productId: widget.productId,
+                          productImage: widget.productImage,
+                          productName: widget.productName,
+                          productPrice: widget.productPrice,
                         )
                       : Padding(
                           padding: const EdgeInsets.only(top: 15),
                           child: Column(
                             children: [
                               InkWell(
-                                  onTap: onDelete,
+                                  onTap: widget.onDelete,
                                   child: Icon(
                                     Icons.delete,
                                     size: 30,
@@ -155,7 +177,7 @@ class SingleItem extends StatelessWidget {
                               SizedBox(
                                 height: 5,
                               ),
-                              wishList == false
+                              widget.wishList == false
                                   ? Container(
                                       height: 25,
                                       width: 70,
@@ -169,22 +191,66 @@ class SingleItem extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            Icon(
-                                              Icons.remove,
-                                              color: Colors.green,
-                                              size: 20,
+                                            InkWell(
+                                              onTap: () {
+                                                if (count == 1) {
+                                                  Fluttertoast.showToast(
+                                                      msg:
+                                                          "Đã đạt đến giới hạn tối thiểu");
+                                                } else {
+                                                  setState(() {
+                                                    count--;
+                                                  });
+                                                  reviewCartProvider
+                                                      .updateReviewCartData(
+                                                          cartImage: widget
+                                                              .productImage,
+                                                          cartQuantity: count,
+                                                          cartPrice: widget
+                                                              .productPrice,
+                                                          cartName: widget
+                                                              .productName,
+                                                          cartId:
+                                                              widget.productId);
+                                                }
+                                              },
+                                              child: Icon(
+                                                Icons.remove,
+                                                color: Colors.green,
+                                                size: 20,
+                                              ),
                                             ),
                                             Text(
-                                              "1",
+                                              "$count",
                                               style: TextStyle(
                                                 color: Colors.grey,
                                                 fontSize: 14,
                                               ),
                                             ),
-                                            Icon(
-                                              Icons.add,
-                                              color: Colors.green,
-                                              size: 20,
+                                            InkWell(
+                                              onTap: () {
+                                                if (count < 10) {
+                                                  setState(() {
+                                                    count++;
+                                                  });
+                                                  reviewCartProvider
+                                                      .updateReviewCartData(
+                                                          cartImage: widget
+                                                              .productImage,
+                                                          cartQuantity: count,
+                                                          cartPrice: widget
+                                                              .productPrice,
+                                                          cartName: widget
+                                                              .productName,
+                                                          cartId:
+                                                              widget.productId);
+                                                }
+                                              },
+                                              child: Icon(
+                                                Icons.add,
+                                                color: Colors.green,
+                                                size: 20,
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -199,7 +265,7 @@ class SingleItem extends StatelessWidget {
             ],
           ),
         ),
-        isBool == false
+        widget.isBool == false
             ? Container()
             : Divider(
                 height: 2,

@@ -47,7 +47,7 @@ class ReviewCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    reviewCartProvider = Provider.of(context);
+    reviewCartProvider = Provider.of<ReviewCartProvider>(context);
     reviewCartProvider.getReviewCartData();
     return Scaffold(
       bottomNavigationBar: ListTile(
