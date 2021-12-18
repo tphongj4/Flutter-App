@@ -9,7 +9,12 @@ class SingalProduct extends StatelessWidget {
   final int productPrice;
   final String productId;
 
-  SingalProduct({this.productId,this.productImage,this.productName, this.onTap, this.productPrice});
+  SingalProduct(
+      {this.productId,
+      this.productImage,
+      this.productName,
+      this.onTap,
+      this.productPrice});
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -33,9 +38,7 @@ class SingalProduct extends StatelessWidget {
                     height: 150,
                     padding: EdgeInsets.all(5),
                     width: double.infinity,
-                    child: Image.network(
-                      productImage
-                    ),
+                    child: Image.network(productImage),
                   ),
                 ),
                 Expanded(
@@ -59,26 +62,60 @@ class SingalProduct extends StatelessWidget {
                         Row(
                           children: [
                             Expanded(
-                              child: Container(
-                                padding: EdgeInsets.only(left: 5),
-                                height: 30,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.green),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                        child: Text(
-                                      '50 Gram',
-                                      style: TextStyle(fontSize: 10),
-                                    )),
-                                    Center(
-                                      child: Icon(Icons.arrow_drop_down,
-                                          size: 20, color: Colors.green),
-                                    )
-                                  ],
+                              child: InkWell(
+                                onTap: () {
+                                  showModalBottomSheet(
+                                      context: context,
+                                      builder: (context) {
+                                        return Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            ListTile(
+                                              leading: new Icon(Icons.photo),
+                                              title: new Text('500 Gram'),
+                                              onTap: () {
+                                                Navigator.pop(context);
+                                              },
+                                            ),
+                                            ListTile(
+                                              leading: new Icon(Icons.photo),
+                                              title: new Text('1kg'),
+                                              onTap: () {
+                                                Navigator.pop(context);
+                                              },
+                                            ),
+                                            ListTile(
+                                              leading: new Icon(Icons.photo),
+                                              title: new Text('2kg'),
+                                              onTap: () {
+                                                Navigator.pop(context);
+                                              },
+                                            )
+                                          ],
+                                        );
+                                      });
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.only(left: 5),
+                                  height: 30,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.green),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                          child: Text(
+                                        '50 Gram',
+                                        style: TextStyle(fontSize: 10),
+                                      )),
+                                      Center(
+                                        child: Icon(Icons.arrow_drop_down,
+                                            size: 20, color: Colors.green),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:market_online_app/config/colors.dart';
 import 'package:market_online_app/providers/wish_list_provider.dart';
+import 'package:market_online_app/screens_app/cart_review/cart_review.dart';
+import 'package:market_online_app/widgets/count.dart';
 import 'package:provider/provider.dart';
 
 enum SigninCharacter { fill, outline }
@@ -69,7 +71,7 @@ class _ProductOverviewState extends State<ProductOverview> {
         .doc(widget.productId)
         .get()
         .then((value) => {
-              if (this.mounted)
+              if (value.exists)
                 {
                   setState(
                     () {
@@ -115,9 +117,15 @@ class _ProductOverviewState extends State<ProductOverview> {
             backgroundColor: Colors.green,
             color: Colors.white70,
             iconColor: Colors.white70,
-            tittle: "Thêm giỏ hàng",
+            tittle: "Thêm vào giỏ hàng",
             iconData: Icons.shopping_cart_outlined,
-          ),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => ReviewCart(),
+                  ),
+                );
+              }),
         ],
       ),
       appBar: AppBar(
@@ -183,28 +191,34 @@ class _ProductOverviewState extends State<ProductOverview> {
                           ],
                         ),
                         Text("${widget.productPrice} VND/1kg"),
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 30, vertical: 10),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.add,
-                                size: 17,
-                                color: Colors.green,
-                              ),
-                              Text(
-                                "Thêm",
-                                style: TextStyle(color: Colors.green),
-                              )
-                            ],
-                          ),
+                        Count(
+                            productId: widget.productId,
+                            productImage: widget.productImage,
+                            productName: widget.productName,
+                            productPrice: widget.productPrice,
                         ),
+                        // Container(
+                        //   padding: EdgeInsets.symmetric(
+                        //       horizontal: 30, vertical: 10),
+                        //   decoration: BoxDecoration(
+                        //     border: Border.all(color: Colors.grey),
+                        //     borderRadius: BorderRadius.circular(30),
+                        //   ),
+                        //   child: Row(
+                        //     mainAxisAlignment: MainAxisAlignment.center,
+                        //     children: [
+                        //       Icon(
+                        //         Icons.add,
+                        //         size: 17,
+                        //         color: Colors.green,
+                        //       ),
+                        //       Text(
+                        //         "Thêm",
+                        //         style: TextStyle(color: Colors.green),
+                        //       )
+                        //     ],
+                        //   ),
+                        // ),
                       ],
                     ),
                   )

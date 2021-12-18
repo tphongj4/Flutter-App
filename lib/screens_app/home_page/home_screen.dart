@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:market_online_app/providers/product_provider.dart';
+import 'package:market_online_app/screens_app/cart_review/cart_review.dart';
 import 'package:market_online_app/screens_app/home_page/drawer_side.dart';
 import 'package:market_online_app/config/colors.dart';
 import 'package:market_online_app/screens_app/home_page/singal_product.dart';
@@ -634,10 +635,23 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: CircleAvatar(
-                radius: 15,
-                backgroundColor: Colors.white,
-                child: Icon(Icons.shopping_cart, size: 15, color: Colors.green),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => ReviewCart(),
+                    ),
+                  );
+                },
+                child: CircleAvatar(
+                  radius: 15,
+                  backgroundColor: Colors.white,
+                  child: Icon(
+                    Icons.shopping_cart,
+                    size: 15,
+                    color: Colors.green,
+                  ),
+                ),
               ),
             ),
           ],
