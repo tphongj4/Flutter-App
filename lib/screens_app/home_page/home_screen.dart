@@ -161,6 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   productImage: vegetableProductData.productImage,
                   productName: vegetableProductData.productName,
                   productPrice: vegetableProductData.productPrice,
+                  productUnit: vegetableProductData,
                 );
               },
             ).toList(),
@@ -285,6 +286,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   productImage: fruitsProductData.productImage,
                   productName: fruitsProductData.productName,
                   productPrice: fruitsProductData.productPrice,
+                  productUnit: fruitsProductData,
                 );
               },
             ).toList(),
@@ -396,6 +398,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   productImage: meatProductData.productImage,
                   productName: meatProductData.productName,
                   productPrice: meatProductData.productPrice,
+                  productUnit: meatProductData,
                 );
               },
             ).toList(),
@@ -506,6 +509,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   productImage: fishProductData.productImage,
                   productName: fishProductData.productName,
                   productPrice: fishProductData.productPrice,
+                  productUnit: fishProductData,
                 );
               },
             ).toList(),

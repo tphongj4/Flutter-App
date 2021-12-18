@@ -117,7 +117,7 @@ class _ProductOverviewState extends State<ProductOverview> {
             backgroundColor: Colors.green,
             color: Colors.white70,
             iconColor: Colors.white70,
-            tittle: "Thêm vào giỏ hàng",
+            tittle: "Đến giỏ hàng",
             iconData: Icons.shopping_cart_outlined,
               onTap: () {
                 Navigator.of(context).push(

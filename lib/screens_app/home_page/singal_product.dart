@@ -1,22 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:market_online_app/config/colors.dart';
+import 'package:market_online_app/config/colors.dart';
+import 'package:market_online_app/models/product_model.dart';
 import 'package:market_online_app/widgets/count.dart';
+import 'package:market_online_app/widgets/product_unit.dart';
 
-class SingalProduct extends StatelessWidget {
+class SingalProduct extends StatefulWidget {
   final String productImage;
   final String productName;
   final Function onTap;
   final int productPrice;
   final String productId;
+  final ProductModel productUnit;
 
-  SingalProduct(
-      {this.productId,
-      this.productImage,
-      this.productName,
-      this.onTap,
-      this.productPrice});
+  SingalProduct({
+    this.productId,
+    this.productImage,
+    this.productName,
+    this.onTap,
+    this.productPrice,
+    this.productUnit,
+  });
+
+  @override
+  State<SingalProduct> createState() => _SingalProductState();
+}
+
+class _SingalProductState extends State<SingalProduct> {
+  var unitData;
+  var firstValue;
   @override
   Widget build(BuildContext context) {
+    widget.productUnit.productUnit.firstWhere((element)  {
+         setState(() {
+           firstValue = element;
+         });
+         return true;
+    });
+
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -33,12 +54,12 @@ class SingalProduct extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GestureDetector(
-                  onTap: onTap,
+                  onTap: widget.onTap,
                   child: Container(
                     height: 150,
                     padding: EdgeInsets.all(5),
                     width: double.infinity,
-                    child: Image.network(productImage),
+                    child: Image.network(widget.productImage),
                   ),
                 ),
                 Expanded(
@@ -50,83 +71,72 @@ class SingalProduct extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          productName,
+                          widget.productName,
                           style: TextStyle(
                               color: Colors.black, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          '$productPrice VND/1kg',
+                          '${widget.productPrice}\VND/${unitData == null?firstValue:unitData}',
                           style: TextStyle(
                               color: Colors.grey, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 5,
                         ),
                         Row(
                           children: [
                             Expanded(
-                              child: InkWell(
+                              child: ProductUnit(
                                 onTap: () {
                                   showModalBottomSheet(
                                       context: context,
                                       builder: (context) {
                                         return Column(
                                           mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            ListTile(
-                                              leading: new Icon(Icons.photo),
-                                              title: new Text('500 Gram'),
-                                              onTap: () {
-                                                Navigator.pop(context);
-                                              },
-                                            ),
-                                            ListTile(
-                                              leading: new Icon(Icons.photo),
-                                              title: new Text('1kg'),
-                                              onTap: () {
-                                                Navigator.pop(context);
-                                              },
-                                            ),
-                                            ListTile(
-                                              leading: new Icon(Icons.photo),
-                                              title: new Text('2kg'),
-                                              onTap: () {
-                                                Navigator.pop(context);
-                                              },
-                                            )
-                                          ],
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: widget
+                                              .productUnit.productUnit
+                                              .map<Widget>((data) {
+                                            return Column(
+                                              children: [
+                                                Padding(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      vertical: 10,
+                                                      horizontal: 10),
+                                                  child: InkWell(
+                                                    onTap: () async {
+                                                      setState(() {
+                                                        unitData = data;
+                                                      });
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                    },
+                                                    child: Text(
+                                                      data,
+                                                      style: TextStyle(
+                                                          color: Colors.green,
+                                                          fontSize: 18),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            );
+                                          }).toList(),
                                         );
                                       });
                                 },
-                                child: Container(
-                                  padding: EdgeInsets.only(left: 5),
-                                  height: 30,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.green),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                          child: Text(
-                                        '50 Gram',
-                                        style: TextStyle(fontSize: 10),
-                                      )),
-                                      Center(
-                                        child: Icon(Icons.arrow_drop_down,
-                                            size: 20, color: Colors.green),
-                                      )
-                                    ],
-                                  ),
-                                ),
+                                title: unitData == null ? firstValue: unitData,
                               ),
                             ),
-                            SizedBox(
-                              width: 5,
-                            ),
+                            SizedBox(width: 5),
                             Count(
-                              productId: productId,
-                              productImage: productImage,
-                              productName: productName,
-                              productPrice: productPrice,
+                              productId: widget.productId,
+                              productImage: widget.productImage,
+                              productName: widget.productName,
+                              productPrice: widget.productPrice,
+                              productUnit: unitData == null ? firstValue: unitData,
                             ),
                             // Expanded(
                             //   child: Container(

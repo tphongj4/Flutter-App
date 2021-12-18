@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:market_online_app/models/product_model.dart';
 import 'package:market_online_app/providers/review_cart_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -9,12 +10,14 @@ class Count extends StatefulWidget {
   String productImage;
   String productId;
   int productPrice;
+  var productUnit;
 
   Count({
     this.productName,
     this.productImage,
     this.productPrice,
     this.productId,
+    this.productUnit
   });
 
   @override
@@ -124,6 +127,7 @@ class _CountState extends State<Count> {
                       cartName: widget.productName,
                       cartPrice: widget.productPrice,
                       cartQuantity: count,
+                      cartUnit: widget.productUnit,
                     );
                   },
                   child: Text(

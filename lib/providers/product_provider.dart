@@ -15,6 +15,7 @@ class ProductProvider with ChangeNotifier {
       productImage: element.get("productImage"),
       productPrice: element.get("productPrice"),
       productId: element.get("productId"),
+      productUnit: element.get("productUnit"),
     );
     search.add(productModel); //Provider Tìm kiếm nhu yếu phẩm
   }

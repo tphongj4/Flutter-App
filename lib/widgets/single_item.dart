@@ -14,6 +14,8 @@ class SingleItem extends StatefulWidget {
   Function onDelete;
   int productQuantity;
   bool wishList = false;
+  var productUnit;
+
   SingleItem(
       {this.productQuantity,
       this.productId,
@@ -22,7 +24,9 @@ class SingleItem extends StatefulWidget {
       this.productImage,
       this.productPrice,
       this.onDelete,
-      this.wishList});
+      this.wishList,
+      this.productUnit,
+      });
 
   @override
   _SingleItemState createState() => _SingleItemState();
@@ -68,20 +72,24 @@ class _SingleItemState extends State<SingleItem> {
                         : MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        children: [
-                          Text(
-                            widget.productName,
-                            style: TextStyle(
-                                color: textColor, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "${widget.productPrice}/VND 1kg",
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold),
-                          )
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget.productName,
+                              style: TextStyle(
+                                  color: textColor, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              "${widget.productPrice}/VND",
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
                       ),
                       widget.isBool == false
                           ? GestureDetector(
@@ -129,7 +137,7 @@ class _SingleItemState extends State<SingleItem> {
                                   children: [
                                     Expanded(
                                       child: Text(
-                                        "50k/1kg",
+                                        "500 Gram",
                                         style: TextStyle(
                                             color: Colors.grey, fontSize: 14),
                                       ),
@@ -145,7 +153,10 @@ class _SingleItemState extends State<SingleItem> {
                                 ),
                               ),
                             )
-                          : Text("1kg")
+                          : Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(widget.productUnit),
+                          )
                     ],
                   ),
                 ),
