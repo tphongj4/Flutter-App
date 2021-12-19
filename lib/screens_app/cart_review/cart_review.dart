@@ -66,6 +66,9 @@ class ReviewCart extends StatelessWidget {
               borderRadius: BorderRadius.circular(30),
             ),
             onPressed: () {
+              if(reviewCartProvider.getReviewCartDataList.isEmpty){
+                return Fluttertoast.showToast(msg: "Không có nhu yếu phẩm nào trong giỏ!");
+              }
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => DeliveryDetails(),

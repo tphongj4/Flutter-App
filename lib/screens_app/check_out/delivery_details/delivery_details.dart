@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market_online_app/screens_app/check_out/delivery_details/single_delivery_item.dart';
+import 'package:market_online_app/screens_app/check_out/add_delivery_addresss/add_delivery_address.dart';
 
 class DeliveryDetails extends StatelessWidget {
   @override
@@ -23,7 +24,13 @@ class DeliveryDetails extends StatelessWidget {
             "Thêm địa chỉ mới",
             style: TextStyle(color: Colors.white),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(
+            MaterialPageRoute(
+            builder: (context) => AddDeliveryAdress(),
+           ),
+         );
+          },
           color: Colors.green,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
