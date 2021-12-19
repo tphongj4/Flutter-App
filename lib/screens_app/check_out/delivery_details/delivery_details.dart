@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:market_online_app/screens_app/check_out/add_delivery_address/add_delivery_address.dart';
 import 'package:market_online_app/screens_app/check_out/delivery_details/single_delivery_item.dart';
-import 'package:market_online_app/screens_app/check_out/add_delivery_addresss/add_delivery_address.dart';
+
 
 class DeliveryDetails extends StatelessWidget {
   @override
