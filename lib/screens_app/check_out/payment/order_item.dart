@@ -30,7 +30,7 @@ class OrderItem extends StatelessWidget {
           ),
         ],
       ),
-      subtitle: Text("5"),
+      subtitle: Text("6"),
     );
   }
 }
