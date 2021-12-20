@@ -4,6 +4,14 @@ import 'package:market_online_app/screens_app/check_out/delivery_details/single_
 
 
 class DeliveryDetails extends StatelessWidget {
+  List<Widget> address = [
+    SingleDeliveryItem(
+      address: "33 Xô Viết Nghệ Tĩnh, Phường Hoà Cường Nam, Hải Châu, Đà Nẵng",
+      tittle: "Khách: Hoàng Thiện",
+      number: "0339 195 193",
+      addressType: "Home",
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,16 +29,27 @@ class DeliveryDetails extends StatelessWidget {
         height: 48,
         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: MaterialButton(
-          child: Text(
-            "Thêm địa chỉ mới",
-            style: TextStyle(color: Colors.white),
-          ),
+          child: address .isEmpty
+              ? Text(
+                  "Thêm địa chỉ mới",
+                  style: TextStyle(color: Colors.white),
+                )
+              : Text(
+                  "Tiến hành thanh toán",
+                  style: TextStyle(color: Colors.white),
+                ),
           onPressed: () {
-            Navigator.of(context).push(
-            MaterialPageRoute(
-            builder: (context) => AddDeliveryAdress(),
-           ),
-         );
+            address .isEmpty
+                ? Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => AddDeliveryAdress(),
+                    ),
+                  )
+                : Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => PaymentSummary(),
+                    ),
+                  );
           },
           color: Colors.green,
           shape: RoundedRectangleBorder(
@@ -54,12 +73,15 @@ class DeliveryDetails extends StatelessWidget {
           ),
           Column(
             children: [
-              SingleDeliveryItem(
-                address: "33 Xô Viết Nghệ Tĩnh, Phường Hoà Cường Nam, Hải Châu, Đà Nẵng",
-                tittle: "Khách: Hoàng Thiện",
-                number: "0339 195 193",
-                addressType: "Home",
-              ),
+              address.isEmpty
+                  ? Container()
+                  : SingleDeliveryItem(
+                      address:
+                          "33 Xô Viết Nghệ Tĩnh, Phường Hoà Cường Nam, Hải Châu, Đà Nẵng",
+                      tittle: "Khách: Hoàng Thiện",
+                      number: "0339 195 193",
+                      addressType: "Home",
+                    ),
             ],
           )
         ],
