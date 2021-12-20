@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:market_online_app/widgets/custom_text_field.dart';
+import 'package:provider/provider.dart';
+import 'package:market_online_app/providers/check_out_provider.dart';
 
 class AddDeliveryAdress extends StatefulWidget {
   @override
@@ -16,6 +18,7 @@ class _AddDeliveryAdressState extends State<AddDeliveryAdress> {
   var myType = AddressType.Home;
   @override
   Widget build(BuildContext context) {
+    CheckoutProvider checkoutProvider = Provider.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -27,8 +30,10 @@ class _AddDeliveryAdressState extends State<AddDeliveryAdress> {
       bottomNavigationBar: Container(
         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         height: 48,
-        child: MaterialButton(
-          onPressed: () {},
+        child: checkoutProvider.isLoading == false ? MaterialButton(
+          onPressed: () {
+            checkoutProvider.validator(context, myType);
+          },
           child: Text(
             "Thêm địa chỉ",
             style: TextStyle(color: Colors.white),
@@ -38,7 +43,9 @@ class _AddDeliveryAdressState extends State<AddDeliveryAdress> {
               borderRadius: BorderRadius.circular(
             30,
           )),
-        ),
+        ):Center(
+          child: CircularProgressIndicator(),
+        )
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
@@ -46,33 +53,52 @@ class _AddDeliveryAdressState extends State<AddDeliveryAdress> {
           children: [
             CustomTextField(
               labText: "Tên",
+              controller: checkoutProvider.ten,
             ),
             CustomTextField(
               labText: "Họ đệm",
+              controller: checkoutProvider.hodem,
+
             ),
             CustomTextField(
               labText: "Số điện thoại",
+              controller: checkoutProvider.sodienthoai,
+
             ),
             CustomTextField(
               labText: "Số khác",
+              controller: checkoutProvider.sokhac,
+
             ),
             CustomTextField(
               labText: "Địa chỉ gao",
+              controller: checkoutProvider.diachigiao,
+
             ),
             CustomTextField(
               labText: "Xã",
+              controller: checkoutProvider.xa,
+
             ),
             CustomTextField(
               labText: "Đường",
+              controller: checkoutProvider.duong,
+
             ),
             CustomTextField(
               labText: "Quận",
+              controller: checkoutProvider.quan,
+
             ),
             CustomTextField(
               labText: "Huyện",
+              controller: checkoutProvider.huyen,
+
             ),
             CustomTextField(
               labText: "Thành Phố",
+              controller: checkoutProvider.thanhpho,
+
             ),
             InkWell(
               onTap: () {},

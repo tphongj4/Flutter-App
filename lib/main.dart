@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:market_online_app/auth/sign_in.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:market_online_app/config/colors.dart';
+import 'package:market_online_app/providers/check_out_provider.dart';
 import 'package:market_online_app/providers/product_provider.dart';
 import 'package:market_online_app/providers/user_provider.dart';
 import 'package:market_online_app/screens_app/home_page/home_screen.dart';
@@ -32,6 +33,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<WishListProvider>(
           create: (context) => WishListProvider(),
+        ),
+        ChangeNotifierProvider<CheckoutProvider>(
+          create: (context) => CheckoutProvider(),
         ),
       ],
       child: MaterialApp(
