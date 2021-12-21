@@ -19,7 +19,7 @@ class OrderItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            e.cartImage,
+            e.cartName,
             style: TextStyle(
               color: Colors.grey[600],
             ),
