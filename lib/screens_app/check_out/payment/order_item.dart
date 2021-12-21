@@ -1,36 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:market_online_app/models/review_cart_model.dart';
 
 class OrderItem extends StatelessWidget {
+  
+  final ReviewCartModel e;
+  OrderItem({this.e});
+
   bool isTrue;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       leading: Image.network(
-        "https://lhu.edu.vn/Data/News/494/images/Pho_bien_kien_thuc/20141127_095250_dua_5_520x347.jpg",
+        e.cartImage,
         width: 60,
       ),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "Tên nhu yếu phẩm",
+            e.cartImage,
             style: TextStyle(
               color: Colors.grey[600],
             ),
           ),
           Text(
-            "500 Gram",
+            e.cartUnit,
             style: TextStyle(
               color: Colors.grey[600],
             ),
           ),
           Text(
-            "50.00VND",
+            "${e.cartPrice}\ VND",
           ),
         ],
       ),
-      subtitle: Text("6"),
+      subtitle: Text(e.cartQuantity.toString()),
     );
   }
 }

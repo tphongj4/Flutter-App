@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:market_online_app/screens_app/check_out/payment/order_item.dart';
+import 'package:market_online_app/models/delivery_address_model.dart';
+import 'package:market_online_app/providers/review_cart_provider.dart';
+import 'package:market_online_app/screens_app/check_out/delivery_details/single_delivery_item.dart';
+import 'package:provider/provider.dart';
 
 class PaymentSummary extends StatefulWidget {
+  
+  final DeliveryAddressModel deliverAddressList;
+  PaymentSummary({this.deliverAddressList});
+
+
   @override
   _PaymentSummaryState createState() => _PaymentSummaryState();
 }
@@ -15,6 +24,22 @@ class _PaymentSummaryState extends State<PaymentSummary> {
   var myType = AddressType.Home;
   @override
   Widget build(BuildContext context) {
+
+    //biểu thức thanh toán
+    ReviewCartProvider reviewCartProvider = Provider.of(context);
+    reviewCartProvider.getReviewCartData();
+
+    double discount = 30;
+    double discountValue;
+    double total;
+    double shippingChange = 3.7;
+    double totalPrice = reviewCartProvider.getTotalPrice();
+    if(totalPrice > 300){
+       discountValue = (totalPrice * discount)/100;
+       total = totalPrice - discountValue;
+    }
+    print(discountValue);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -26,7 +51,7 @@ class _PaymentSummaryState extends State<PaymentSummary> {
       bottomNavigationBar: ListTile(
         title: Text("Tổng cộng"),
         subtitle: Text(
-          "500.000VND",
+          "${total + 5 ?? totalPrice}\ VND",
           style: TextStyle(
               color: Colors.green[800],
               fontWeight: FontWeight.bold,
@@ -54,22 +79,28 @@ class _PaymentSummaryState extends State<PaymentSummary> {
           itemBuilder: (context, index) {
             return Column(
               children: [
-                ListTile(
-                  title: Text("Họ và tên"),
-                  subtitle: Text(
-                      "33 Xô Viết Nghệ Tĩnh, Phường Hoà Cường Nam, Hải Châu, Đà Nẵng"),
+                SingleDeliveryItem(
+                  address:
+                      "Địa chỉ: ${widget.deliverAddressList.diaChigiao}, Xã ${widget.deliverAddressList.xa}, Quận ${widget.deliverAddressList.quan}, Huyện ${widget.deliverAddressList.huyen}, Thành Phố ${widget.deliverAddressList.thanhPho} ",
+                  tittle:
+                      "${widget.deliverAddressList.ten} ${widget.deliverAddressList.hoDem}",
+                  number: widget.deliverAddressList.soDienthoai,
+                  addressType: widget.deliverAddressList.loaidiahchi ==
+                          "AddressType.Khac"
+                      ? "Khác"
+                      : widget.deliverAddressList.loaidiahchi ==
+                              "AddressType.Home"
+                          ? "Nhà"
+                          : "Công ty",
                 ),
                 Divider(),
                 ExpansionTile(
-                  children: [
-                    OrderItem(),
-                    OrderItem(),
-                    OrderItem(),
-                    OrderItem(),
-                    OrderItem(),
-                    OrderItem(),
-                  ],
-                  title: Text("Đặt 6 mặt hàng cá"),
+                  children: reviewCartProvider.getReviewCartDataList
+                      .map((e) {
+                        return OrderItem(e: e,);
+                  })
+                      .toList(),
+                  title: Text("Đã đặt ${reviewCartProvider.getReviewCartDataList.length} nhu yếu phẩm"),
                 ),
                 Divider(),
                 ListTile(
@@ -81,7 +112,7 @@ class _PaymentSummaryState extends State<PaymentSummary> {
                     ),
                   ),
                   trailing: Text(
-                    "50.00VND",
+                    "${totalPrice + 5}\VND",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
@@ -96,7 +127,7 @@ class _PaymentSummaryState extends State<PaymentSummary> {
                     ),
                   ),
                   trailing: Text(
-                    "0.VND",
+                    "$discountValue",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
@@ -111,7 +142,7 @@ class _PaymentSummaryState extends State<PaymentSummary> {
                     ),
                   ),
                   trailing: Text(
-                    "10.000VND",
+                    "30%",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),

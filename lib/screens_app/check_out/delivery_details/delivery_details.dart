@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:market_online_app/models/delivery_address_model.dart';
 import 'package:market_online_app/providers/check_out_provider.dart';
 import 'package:market_online_app/screens_app/check_out/add_delivery_address/add_delivery_address.dart';
 import 'package:market_online_app/screens_app/check_out/delivery_details/single_delivery_item.dart';
 import 'package:market_online_app/screens_app/check_out/payment/payment_summary.dart';
 import 'package:provider/provider.dart';
 
-class DeliveryDetails extends StatelessWidget {
+class DeliveryDetails extends StatefulWidget {
+  @override
+  State<DeliveryDetails> createState() => _DeliveryDetailsState();
+}
+class _DeliveryDetailsState extends State<DeliveryDetails> {
+  DeliveryAddressModel value;
   @override
   Widget build(BuildContext context) {
     CheckoutProvider deliveryAddressProvider = Provider.of(context);
@@ -49,7 +55,9 @@ class DeliveryDetails extends StatelessWidget {
                   )
                 : Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => PaymentSummary(),
+                      builder: (context) => PaymentSummary(
+                        deliverAddressList: value,
+                      ),
                     ),
                   );
           },
@@ -80,8 +88,11 @@ class DeliveryDetails extends StatelessWidget {
                   ),
                 )
               : Column(
-                  children:
-                      deliveryAddressProvider.getDeliveryAddressList.map((e) {
+                  children: deliveryAddressProvider.getDeliveryAddressList
+                      .map<Widget>((e) {
+                        setState(() {
+                          value = e;
+                        });
                     return SingleDeliveryItem(
                       address:
                           "Địa chỉ: ${e.diaChigiao}, Xã ${e.xa}, Quận ${e.quan}, Huyện ${e.huyen}, Thành Phố ${e.thanhPho} ",
