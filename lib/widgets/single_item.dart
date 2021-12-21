@@ -131,7 +131,7 @@ class _SingleItemState extends State<SingleItem> {
                                 height: 35,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(30),
-                                  border: Border.all(color: Colors.grey),
+                                  border: Border.all(color: Colors.green),
                                 ),
                                 child: Row(
                                   children: [
@@ -139,7 +139,7 @@ class _SingleItemState extends State<SingleItem> {
                                       child: Text(
                                         "500 Gram",
                                         style: TextStyle(
-                                            color: Colors.grey, fontSize: 14),
+                                            color: Colors.green, fontSize: 14),
                                       ),
                                     ),
                                     Center(

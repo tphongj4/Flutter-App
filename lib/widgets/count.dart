@@ -131,7 +131,7 @@ class _CountState extends State<Count> {
                     );
                   },
                   child: Text(
-                    "Thêm",
+                    "Mua",
                     style: TextStyle(color: Colors.red),
                   ),
                 ),
