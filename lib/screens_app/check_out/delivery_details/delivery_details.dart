@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:market_online_app/providers/check_out_provider.dart';
 import 'package:market_online_app/screens_app/check_out/add_delivery_address/add_delivery_address.dart';
 import 'package:market_online_app/screens_app/check_out/delivery_details/single_delivery_item.dart';
 import 'package:market_online_app/screens_app/check_out/payment/payment_summary.dart';
-
+import 'package:provider/provider.dart';
 
 class DeliveryDetails extends StatelessWidget {
-  List<Widget> address = [
-    SingleDeliveryItem(
-      address: "33 Xô Viết Nghệ Tĩnh, Phường Hoà Cường Nam, Hải Châu, Đà Nẵng",
-      tittle: "Khách: Hoàng Thiện",
-      number: "0339 195 193",
-      addressType: "Home",
-    ),
-  ];
   @override
   Widget build(BuildContext context) {
+    CheckoutProvider deliveryAddressProvider = Provider.of(context);
+    deliveryAddressProvider.getDeliveryAddressData();
     return Scaffold(
       appBar: AppBar(
         title: Text("Chi tiết giao nhu yếu phẩm"),
@@ -36,7 +31,7 @@ class DeliveryDetails extends StatelessWidget {
         height: 48,
         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: MaterialButton(
-          child: address .isEmpty
+          child: deliveryAddressProvider.getDeliveryAddressList.isEmpty
               ? Text(
                   "Thêm địa chỉ mới",
                   style: TextStyle(color: Colors.white),
@@ -46,7 +41,7 @@ class DeliveryDetails extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 ),
           onPressed: () {
-            address .isEmpty
+            deliveryAddressProvider.getDeliveryAddressList.isEmpty
                 ? Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => AddDeliveryAdress(),
@@ -78,19 +73,28 @@ class DeliveryDetails extends StatelessWidget {
             height: 5,
             color: Colors.green,
           ),
-          Column(
-            children: [
-              address.isEmpty
-                  ? Container()
-                  : SingleDeliveryItem(
+          deliveryAddressProvider.getDeliveryAddressList.isEmpty
+              ? Container(
+                  child: Center(
+                    child: Text("Không có địa chỉ nào"),
+                  ),
+                )
+              : Column(
+                  children:
+                      deliveryAddressProvider.getDeliveryAddressList.map((e) {
+                    return SingleDeliveryItem(
                       address:
-                          "33 Xô Viết Nghệ Tĩnh, Phường Hoà Cường Nam, Hải Châu, Đà Nẵng",
-                      tittle: "Khách: Hoàng Thiện",
-                      number: "0339 195 193",
-                      addressType: "Home",
-                    ),
-            ],
-          )
+                          "Địa chỉ: ${e.diaChigiao}, Xã ${e.xa}, Quận ${e.quan}, Huyện ${e.huyen}, Thành Phố ${e.thanhPho} ",
+                      tittle: "${e.ten} ${e.hoDem}",
+                      number: e.soDienthoai,
+                      addressType: e.loaidiahchi == "AddressType.Khac"
+                          ? "Khác"
+                          : e.loaidiahchi == "AddressType.Home"
+                              ? "Nhà"
+                              : "Công ty",
+                    );
+                  }).toList(),
+                )
         ],
       ),
     );
