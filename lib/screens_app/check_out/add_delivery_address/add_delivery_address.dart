@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:market_online_app/screens_app/check_out/google_map/google_map.dart';
 import 'package:market_online_app/widgets/custom_text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:market_online_app/providers/check_out_provider.dart';
@@ -28,25 +29,26 @@ class _AddDeliveryAdressState extends State<AddDeliveryAdress> {
         backgroundColor: Colors.green,
       ),
       bottomNavigationBar: Container(
-        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-        height: 48,
-        child: checkoutProvider.isLoading == false ? MaterialButton(
-          onPressed: () {
-            checkoutProvider.validator(context, myType);
-          },
-          child: Text(
-            "Thêm địa chỉ",
-            style: TextStyle(color: Colors.white),
-          ),
-          color: Colors.green,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(
-            30,
-          )),
-        ):Center(
-          child: CircularProgressIndicator(),
-        )
-      ),
+          margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          height: 48,
+          child: checkoutProvider.isLoading == false
+              ? MaterialButton(
+                  onPressed: () {
+                    checkoutProvider.validator(context, myType);
+                  },
+                  child: Text(
+                    "Thêm địa chỉ",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  color: Colors.green,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                    30,
+                  )),
+                )
+              : Center(
+                  child: CircularProgressIndicator(),
+                )),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: ListView(
@@ -58,57 +60,59 @@ class _AddDeliveryAdressState extends State<AddDeliveryAdress> {
             CustomTextField(
               labText: "Họ đệm",
               controller: checkoutProvider.hodem,
-
             ),
             CustomTextField(
               labText: "Số điện thoại",
               controller: checkoutProvider.sodienthoai,
-
             ),
             CustomTextField(
               labText: "Số khác",
               controller: checkoutProvider.sokhac,
-
             ),
             CustomTextField(
               labText: "Địa chỉ gao",
               controller: checkoutProvider.diachigiao,
-
             ),
             CustomTextField(
               labText: "Xã",
               controller: checkoutProvider.xa,
-
             ),
             CustomTextField(
               labText: "Đường",
               controller: checkoutProvider.duong,
-
             ),
             CustomTextField(
               labText: "Quận",
               controller: checkoutProvider.quan,
-
             ),
             CustomTextField(
               labText: "Huyện",
               controller: checkoutProvider.huyen,
-
             ),
             CustomTextField(
               labText: "Thành Phố",
               controller: checkoutProvider.thanhpho,
-
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => CustomGoogleMap(),
+                  ),
+                );
+              },
               child: Container(
                 height: 47,
                 width: double.infinity,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [Text("Thêm địa điểm")],
+                  children: [
+                    checkoutProvider.setLocation == null ? Text("Thêm địa điểm"):
+                    Text(
+                      "Thêm thành công!", style: TextStyle(color: Colors.green),
+                    ),
+                  ],
                 ),
               ),
             ),

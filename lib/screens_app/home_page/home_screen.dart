@@ -123,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Rau củ - Gia vị'),
+              Text('Rau củ - Gia vị', style: TextStyle(fontWeight: FontWeight.bold),),
               // Phần của Tin
               GestureDetector(
                 onTap: () {
@@ -137,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 child: Text(
                   "Xem tất cả",
-                  style: TextStyle(color: Colors.grey),
+                  style: TextStyle(color: Colors.red),
                 ),
               )
             ],
@@ -249,7 +249,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Trái cây tươi'),
+              Text('Trái cây tươi', style: TextStyle(fontWeight: FontWeight.bold),),
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
@@ -262,7 +262,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 child: Text(
                   "Xem tất cả",
-                  style: TextStyle(color: Colors.grey),
+                  style: TextStyle(color: Colors.red),
                 ),
               )
             ],
@@ -361,7 +361,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Thịt tươi sống'),
+              Text('Thịt tươi sống',style: TextStyle(fontWeight: FontWeight.bold),),
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
@@ -374,7 +374,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 child: Text(
                   "Xem tất cả",
-                  style: TextStyle(color: Colors.grey),
+                  style: TextStyle(color: Colors.red),
                 ),
               )
             ],
@@ -472,7 +472,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Cá tươi sống'),
+              Text('Cá tươi sống', style: TextStyle(fontWeight: FontWeight.bold),),
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
@@ -485,7 +485,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 child: Text(
                   "Xem tất cả",
-                  style: TextStyle(color: Colors.grey),
+                  style: TextStyle(color: Colors.red),
                 ),
               )
             ],

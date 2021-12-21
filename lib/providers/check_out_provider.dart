@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:location/location.dart';
 
 class CheckoutProvider with ChangeNotifier {
 
@@ -17,6 +18,7 @@ class CheckoutProvider with ChangeNotifier {
   TextEditingController quan = TextEditingController();
   TextEditingController huyen = TextEditingController();
   TextEditingController thanhpho = TextEditingController();
+  LocationData setLocation;
 
   void validator(context, myType) async {
     if (ten.text.isEmpty) {
@@ -39,7 +41,9 @@ class CheckoutProvider with ChangeNotifier {
       Fluttertoast.showToast(msg: "Huyện trống");
     } else if (thanhpho.text.isEmpty) {
       Fluttertoast.showToast(msg: "Thành phố trống");
-    } else {
+    }else if (setLocation == null) {
+      Fluttertoast.showToast(msg: "Địa điểm trống");
+    }else {
       isLoading = true;
       notifyListeners();
       await FirebaseFirestore.instance
@@ -57,10 +61,12 @@ class CheckoutProvider with ChangeNotifier {
         "Huyen": huyen.text,
         "ThanhPho": thanhpho.text,
         "LoaiDiaChi": myType.toString(),
+        "Longitude": setLocation.longitude,
+        "Latitude": setLocation.latitude,
       }).then((value) async {
         isLoading = false;
         notifyListeners();
-        await Fluttertoast.showToast(msg: "Thêm địa chỉ giao hàng");
+        await Fluttertoast.showToast(msg: "Đã thêm địa chỉ giao hàng");
         Navigator.of(context).pop();
         notifyListeners();
       });

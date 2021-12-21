@@ -1,7 +1,6 @@
 // Tạo trang Login Page Market Online
 // Coder: Hien.HD - 04-12-2021
 
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_view.dart';
@@ -17,7 +16,6 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-
   UserProvider userProvider;
   Future<void> _googleSignUp() async {
     try {
@@ -66,23 +64,27 @@ class _SignInState extends State<SignIn> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
+              margin: EdgeInsets.only(top: 250),
               height: 400,
               width: double.infinity,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text('Sign in to continue'),
-                  Text(
-                    'Market Online App',
-                    style:
-                        TextStyle(fontSize: 45, color: Colors.white, shadows: [
-                      BoxShadow(
-                        blurRadius: 5,
-                        color: Colors.green.shade900,
-                        offset: Offset(3, 3),
-                      )
-                    ]),
-                  ),
+                  // Text('Đăng nhập để tiếp tục sử dụng hệ thống'),
+                  // Text(
+                  //   'Market Online App',
+                  //   style: TextStyle(
+                  //     fontSize: 60,
+                  //     color: Colors.white,
+                  //     shadows: [
+                  //       BoxShadow(
+                  //         blurRadius: 5,
+                  //         color: Colors.green.shade900,
+                  //         offset: Offset(3, 3),
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
                   Column(
                     children: [
                       SignInButton(
@@ -108,15 +110,19 @@ class _SignInState extends State<SignIn> {
                   Column(
                     children: [
                       Text(
-                        'By signing in you are agreeing to our',
+                        'Chọn cách đăng nhập, và đồng ý vào đi chợ!',
                         style: TextStyle(
-                          color: Colors.grey[800],
+                          color: Colors.white,
+                          fontSize: 15
                         ),
                       ),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Text(
-                        'Created by Group Flutter 7',
+                        'App được thiết kế bởi Nhóm 7',
                         style: TextStyle(
-                          color: Colors.grey[800],
+                          color: Colors.white, fontWeight: FontWeight.bold
                         ),
                       ),
                     ],
