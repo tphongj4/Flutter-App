@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:market_online_app/screens_app/check_out/payment/my_google_pay.dart';
 import 'package:market_online_app/screens_app/check_out/payment/order_item.dart';
 import 'package:market_online_app/models/delivery_address_model.dart';
 import 'package:market_online_app/providers/review_cart_provider.dart';
@@ -6,10 +7,8 @@ import 'package:market_online_app/screens_app/check_out/delivery_details/single_
 import 'package:provider/provider.dart';
 
 class PaymentSummary extends StatefulWidget {
-  
   final DeliveryAddressModel deliverAddressList;
   PaymentSummary({this.deliverAddressList});
-
 
   @override
   _PaymentSummaryState createState() => _PaymentSummaryState();
@@ -24,7 +23,6 @@ class _PaymentSummaryState extends State<PaymentSummary> {
   var myType = AddressType.Home;
   @override
   Widget build(BuildContext context) {
-
     //biểu thức thanh toán
     ReviewCartProvider reviewCartProvider = Provider.of(context);
     reviewCartProvider.getReviewCartData();
@@ -34,11 +32,11 @@ class _PaymentSummaryState extends State<PaymentSummary> {
     double total;
     double shippingChange = 3.7;
     double totalPrice = reviewCartProvider.getTotalPrice();
-    if(totalPrice > 300){
-       discountValue = (totalPrice * discount)/100;
-       total = totalPrice - discountValue;
+    if (totalPrice > 300) {
+      discountValue = (totalPrice * discount) / 100;
+      total = totalPrice - discountValue;
     }
-    print(discountValue);
+    // print(discountValue);
 
     return Scaffold(
       appBar: AppBar(
@@ -60,7 +58,17 @@ class _PaymentSummaryState extends State<PaymentSummary> {
         trailing: Container(
           width: 160,
           child: MaterialButton(
-            onPressed: () {},
+            onPressed: () {
+              myType == AddressType.OnlinePayment
+                  ? Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => MyGooglePay(
+                          total: total,
+                        ),
+                      ),
+                    )
+                  : Container();
+            },
             child: Text(
               "Đặt hàng",
               style: TextStyle(color: Colors.white),
@@ -95,12 +103,13 @@ class _PaymentSummaryState extends State<PaymentSummary> {
                 ),
                 Divider(),
                 ExpansionTile(
-                  children: reviewCartProvider.getReviewCartDataList
-                      .map((e) {
-                        return OrderItem(e: e,);
-                  })
-                      .toList(),
-                  title: Text("Đã đặt ${reviewCartProvider.getReviewCartDataList.length} nhu yếu phẩm"),
+                  children: reviewCartProvider.getReviewCartDataList.map((e) {
+                    return OrderItem(
+                      e: e,
+                    );
+                  }).toList(),
+                  title: Text(
+                      "Đã đặt ${reviewCartProvider.getReviewCartDataList.length} nhu yếu phẩm"),
                 ),
                 Divider(),
                 ListTile(
