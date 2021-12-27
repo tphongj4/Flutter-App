@@ -14,6 +14,7 @@ class ProductOverview extends StatefulWidget {
   final String productImage;
   final int productPrice;
   final String productId;
+  // final String productQuantity;
 
   ProductOverview(
       {this.productImage, this.productName, this.productPrice, this.productId});

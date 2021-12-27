@@ -10,6 +10,7 @@ class WishListProvider with ChangeNotifier {
     String wishListImage,
     int wishListPrice,
     int wishListQuantity,
+
   }) async {
     await FirebaseFirestore.instance
         .collection("WishList")

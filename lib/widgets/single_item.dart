@@ -254,7 +254,9 @@ class _SingleItemState extends State<SingleItem> {
                                                           cartName: widget
                                                               .productName,
                                                           cartId:
-                                                              widget.productId);
+                                                              widget.productId,
+
+                                                  );
                                                 }
                                               },
                                               child: Icon(

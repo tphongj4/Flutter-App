@@ -38,6 +38,7 @@ class ReviewCartProvider with ChangeNotifier {
     int cartPrice,
     String cartImage,
     int cartQuantity,
+
   }) async {
     await FirebaseFirestore.instance
         .collection("ReviewCart")

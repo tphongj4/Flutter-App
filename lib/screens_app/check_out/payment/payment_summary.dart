@@ -49,7 +49,7 @@ class _PaymentSummaryState extends State<PaymentSummary> {
       bottomNavigationBar: ListTile(
         title: Text("Tổng cộng"),
         subtitle: Text(
-          "${total + 5 ?? totalPrice}\ VND",
+          "${total ?? totalPrice}\ VND",
           style: TextStyle(
               color: Colors.green[800],
               fontWeight: FontWeight.bold,
@@ -121,7 +121,7 @@ class _PaymentSummaryState extends State<PaymentSummary> {
                     ),
                   ),
                   trailing: Text(
-                    "${totalPrice + 5}\VND",
+                    "${totalPrice}\VND",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
@@ -130,7 +130,7 @@ class _PaymentSummaryState extends State<PaymentSummary> {
                 ListTile(
                   minVerticalPadding: 5,
                   leading: Text(
-                    "Phí Shipper",
+                    "Tặng Voucher trên 300k",
                     style: TextStyle(
                       color: Colors.grey[600],
                     ),
